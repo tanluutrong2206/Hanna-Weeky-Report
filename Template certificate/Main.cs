@@ -202,16 +202,7 @@ namespace Template_certificate
 
         private void HeaderCheckBox_Clicked(object sender, EventArgs e)
         {
-            //Necessary to end the edit mode of the Cell.
-            //dataGridView1.EndEdit();
 
-            //Loop and check and uncheck all row CheckBoxes based on Header Cell CheckBox.
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                DataGridViewCheckBoxCell checkBox = (row.Cells["checkBoxColumn"] as DataGridViewCheckBoxCell);
-                checkBox.Value = headerCheckBox.Checked;
-            }
-            dataGridView1.EndEdit();
         }
 
         private void DataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -576,6 +567,16 @@ namespace Template_certificate
         {
             ProcessDialog dialog = new ProcessDialog(this, true);
             dialog.ShowDialog();
+        }
+
+        private void tabPageHWR_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void previewBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
