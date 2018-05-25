@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -18,7 +19,7 @@ using System.Windows.Forms;
 
 namespace Template_certificate
 {
-    public partial class ProcessDialog : Form
+    public partial class ProcessDialogGenerateCertificate : Form
     {
         private string folderStoragePath;
         private readonly DataGridView dataGridView1;
@@ -60,7 +61,7 @@ namespace Template_certificate
         private const string MASTER_FOLDER_NAME = "Chứng chỉ Funix";
         private string ApplicationName = "Funix's Certificate Generation Automatical";
 
-        public ProcessDialog(Main owner, bool isUpload)
+        public ProcessDialogGenerateCertificate(Main owner, bool isUpload)
         {
             InitializeComponent();
             this._owner = owner;
@@ -200,6 +201,7 @@ namespace Template_certificate
 
         private void GeneratePdf(string studentName, string studentId, DateTime date, string ccVnName, string ccEnName, string ccNumber, string folderStoragePath, string ccCode, string email, DoWorkEventArgs ev, SelectPdf.HtmlToPdf converter)
         {
+            
             CertificateModel certificateModel = new CertificateModel();
             string filePath = null;
             if (backgroundWorker1.CancellationPending)
@@ -219,9 +221,15 @@ namespace Template_certificate
                     // define a rendering result object
 
                     PdfDocument doc = converter.ConvertHtmlString(html);
-
                     doc.Save(filePath);
                     doc.Close();
+
+                    //HtmlToImage htmlToImage = new HtmlToImage();
+                    //Image img = htmlToImage.ConvertHtmlString(html);
+
+                    ////TODO: create new file first
+                    //FileStream stream = File.Open("D:/Image/test.png", FileMode.Create);
+                    //img.Save(stream, ImageFormat.Png);
 
                     UploadFileToGoogleDrive(studentName, studentId, date, ccEnName, ccNumber, ccCode, email, filePath, ev);
                 }

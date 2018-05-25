@@ -30,11 +30,12 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageCertificate = new System.Windows.Forms.TabPage();
-            this.tabPageHWR = new System.Windows.Forms.TabPage();
             this.renderAndUploadBtn = new System.Windows.Forms.Button();
             this.renderPdfBtn = new System.Windows.Forms.Button();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.excelPath = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.filterBtn = new System.Windows.Forms.Button();
             this.resetFilterBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,9 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.compare3 = new System.Windows.Forms.TextBox();
             this.compare2 = new System.Windows.Forms.TextBox();
-            this.excelPath = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.compare1 = new System.Windows.Forms.TextBox();
             this.comparison3 = new System.Windows.Forms.ComboBox();
             this.comparison2 = new System.Windows.Forms.ComboBox();
@@ -55,36 +53,38 @@
             this.and_orCbx2 = new System.Windows.Forms.ComboBox();
             this.and_orCbx1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.folderPath = new System.Windows.Forms.TextBox();
             this.chooseFolder = new System.Windows.Forms.Button();
             this.chooseFileBtn = new System.Windows.Forms.Button();
+            this.tabPageHWR = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.reportedDate = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.previewBtn = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.previewBtn = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.reportedDate = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl.SuspendLayout();
             this.tabPageCertificate.SuspendLayout();
-            this.tabPageHWR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tabPageHWR.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -95,7 +95,7 @@
             this.tabControl.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(574, 439);
+            this.tabControl.Size = new System.Drawing.Size(574, 509);
             this.tabControl.TabIndex = 0;
             // 
             // tabPageCertificate
@@ -113,32 +113,10 @@
             this.tabPageCertificate.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.tabPageCertificate.Name = "tabPageCertificate";
             this.tabPageCertificate.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.tabPageCertificate.Size = new System.Drawing.Size(566, 479);
+            this.tabPageCertificate.Size = new System.Drawing.Size(566, 483);
             this.tabPageCertificate.TabIndex = 0;
             this.tabPageCertificate.Text = "Certificate";
             this.tabPageCertificate.UseVisualStyleBackColor = true;
-            // 
-            // tabPageHWR
-            // 
-            this.tabPageHWR.Controls.Add(this.groupBox2);
-            this.tabPageHWR.Controls.Add(this.label7);
-            this.tabPageHWR.Controls.Add(this.previewBtn);
-            this.tabPageHWR.Controls.Add(this.button3);
-            this.tabPageHWR.Controls.Add(this.button4);
-            this.tabPageHWR.Controls.Add(this.textBox3);
-            this.tabPageHWR.Controls.Add(this.dataGridView2);
-            this.tabPageHWR.Controls.Add(this.textBox5);
-            this.tabPageHWR.Controls.Add(this.button8);
-            this.tabPageHWR.Controls.Add(this.button9);
-            this.tabPageHWR.Location = new System.Drawing.Point(4, 22);
-            this.tabPageHWR.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.tabPageHWR.Name = "tabPageHWR";
-            this.tabPageHWR.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.tabPageHWR.Size = new System.Drawing.Size(566, 413);
-            this.tabPageHWR.TabIndex = 1;
-            this.tabPageHWR.Text = "HWR";
-            this.tabPageHWR.UseVisualStyleBackColor = true;
-            this.tabPageHWR.Click += new System.EventHandler(this.tabPageHWR_Click);
             // 
             // renderAndUploadBtn
             // 
@@ -174,6 +152,58 @@
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // excelPath
+            // 
+            this.excelPath.Location = new System.Drawing.Point(6, 6);
+            this.excelPath.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.excelPath.Name = "excelPath";
+            this.excelPath.ReadOnly = true;
+            this.excelPath.Size = new System.Drawing.Size(407, 20);
+            this.excelPath.TabIndex = 32;
+            this.excelPath.Click += new System.EventHandler(this.chooseFileBtn_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 80);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(548, 180);
+            this.dataGridView1.TabIndex = 30;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.filterBtn);
+            this.groupBox1.Controls.Add(this.resetFilterBtn);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.compare3);
+            this.groupBox1.Controls.Add(this.compare2);
+            this.groupBox1.Controls.Add(this.compare1);
+            this.groupBox1.Controls.Add(this.comparison3);
+            this.groupBox1.Controls.Add(this.comparison2);
+            this.groupBox1.Controls.Add(this.comparison1);
+            this.groupBox1.Controls.Add(this.field3);
+            this.groupBox1.Controls.Add(this.field2);
+            this.groupBox1.Controls.Add(this.field1);
+            this.groupBox1.Controls.Add(this.and_orCbx2);
+            this.groupBox1.Controls.Add(this.and_orCbx1);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Location = new System.Drawing.Point(6, 278);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.groupBox1.Size = new System.Drawing.Size(548, 164);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filter";
             // 
             // filterBtn
             // 
@@ -244,34 +274,6 @@
             this.compare2.Size = new System.Drawing.Size(156, 20);
             this.compare2.TabIndex = 19;
             this.compare2.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
-            // excelPath
-            // 
-            this.excelPath.Location = new System.Drawing.Point(6, 6);
-            this.excelPath.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.excelPath.Name = "excelPath";
-            this.excelPath.ReadOnly = true;
-            this.excelPath.Size = new System.Drawing.Size(407, 20);
-            this.excelPath.TabIndex = 32;
-            this.excelPath.Click += new System.EventHandler(this.chooseFileBtn_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 80);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(548, 180);
-            this.dataGridView1.TabIndex = 30;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // compare1
             // 
@@ -411,34 +413,6 @@
             this.button2.Text = "Ok";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.filterBtn);
-            this.groupBox1.Controls.Add(this.resetFilterBtn);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.compare3);
-            this.groupBox1.Controls.Add(this.compare2);
-            this.groupBox1.Controls.Add(this.compare1);
-            this.groupBox1.Controls.Add(this.comparison3);
-            this.groupBox1.Controls.Add(this.comparison2);
-            this.groupBox1.Controls.Add(this.comparison1);
-            this.groupBox1.Controls.Add(this.field3);
-            this.groupBox1.Controls.Add(this.field2);
-            this.groupBox1.Controls.Add(this.field1);
-            this.groupBox1.Controls.Add(this.and_orCbx2);
-            this.groupBox1.Controls.Add(this.and_orCbx1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Location = new System.Drawing.Point(6, 278);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.groupBox1.Size = new System.Drawing.Size(548, 164);
-            this.groupBox1.TabIndex = 35;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filter";
-            // 
             // folderPath
             // 
             this.folderPath.Location = new System.Drawing.Point(6, 41);
@@ -470,6 +444,133 @@
             this.chooseFileBtn.Text = "Choose excel file";
             this.chooseFileBtn.UseVisualStyleBackColor = true;
             this.chooseFileBtn.Click += new System.EventHandler(this.chooseFileBtn_Click);
+            // 
+            // tabPageHWR
+            // 
+            this.tabPageHWR.Controls.Add(this.groupBox2);
+            this.tabPageHWR.Controls.Add(this.label7);
+            this.tabPageHWR.Controls.Add(this.previewBtn);
+            this.tabPageHWR.Controls.Add(this.button3);
+            this.tabPageHWR.Controls.Add(this.button4);
+            this.tabPageHWR.Controls.Add(this.textBox3);
+            this.tabPageHWR.Controls.Add(this.dataGridView2);
+            this.tabPageHWR.Controls.Add(this.textBox5);
+            this.tabPageHWR.Controls.Add(this.button8);
+            this.tabPageHWR.Controls.Add(this.button9);
+            this.tabPageHWR.Location = new System.Drawing.Point(4, 22);
+            this.tabPageHWR.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.tabPageHWR.Name = "tabPageHWR";
+            this.tabPageHWR.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.tabPageHWR.Size = new System.Drawing.Size(566, 483);
+            this.tabPageHWR.TabIndex = 1;
+            this.tabPageHWR.Text = "HWR";
+            this.tabPageHWR.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton4);
+            this.groupBox2.Controls.Add(this.radioButton3);
+            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.reportedDate);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Location = new System.Drawing.Point(8, 269);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(548, 100);
+            this.groupBox2.TabIndex = 40;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "More Informations";
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(205, 73);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(45, 17);
+            this.radioButton4.TabIndex = 6;
+            this.radioButton4.Text = "CC4";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(205, 50);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(45, 17);
+            this.radioButton3.TabIndex = 5;
+            this.radioButton3.Text = "CC3";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(110, 73);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(45, 17);
+            this.radioButton2.TabIndex = 4;
+            this.radioButton2.Text = "CC2";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(110, 50);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(45, 17);
+            this.radioButton1.TabIndex = 3;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "CC1";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Template";
+            // 
+            // reportedDate
+            // 
+            this.reportedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.reportedDate.Location = new System.Drawing.Point(110, 19);
+            this.reportedDate.Name = "reportedDate";
+            this.reportedDate.Size = new System.Drawing.Size(99, 20);
+            this.reportedDate.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Reported Date";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(36, 381);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 13);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Preview Template";
+            // 
+            // previewBtn
+            // 
+            this.previewBtn.Font = new System.Drawing.Font("Segoe MDL2 Assets", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previewBtn.Location = new System.Drawing.Point(8, 375);
+            this.previewBtn.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.previewBtn.Name = "previewBtn";
+            this.previewBtn.Size = new System.Drawing.Size(24, 22);
+            this.previewBtn.TabIndex = 38;
+            this.previewBtn.Text = " ";
+            this.previewBtn.UseVisualStyleBackColor = true;
+            this.previewBtn.Click += new System.EventHandler(this.previewBtn_Click);
             // 
             // button3
             // 
@@ -517,10 +618,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(548, 180);
             this.dataGridView2.TabIndex = 30;
             // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog1";
-            // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(8, 43);
@@ -553,118 +650,20 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.chooseFileBtn_Click);
             // 
-            // previewBtn
+            // openFileDialog1
             // 
-            this.previewBtn.Font = new System.Drawing.Font("Segoe MDL2 Assets", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previewBtn.Location = new System.Drawing.Point(8, 375);
-            this.previewBtn.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.previewBtn.Name = "previewBtn";
-            this.previewBtn.Size = new System.Drawing.Size(24, 22);
-            this.previewBtn.TabIndex = 38;
-            this.previewBtn.Text = " ";
-            this.previewBtn.UseVisualStyleBackColor = true;
-            this.previewBtn.Click += new System.EventHandler(this.previewBtn_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label7
+            // openFileDialog2
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(36, 381);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 13);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "Preview Template";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.reportedDate);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(8, 269);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(548, 100);
-            this.groupBox2.TabIndex = 40;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "More Informations";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Reported Date";
-            // 
-            // reportedDate
-            // 
-            this.reportedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.reportedDate.Location = new System.Drawing.Point(110, 19);
-            this.reportedDate.Name = "reportedDate";
-            this.reportedDate.Size = new System.Drawing.Size(99, 20);
-            this.reportedDate.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Template";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(110, 50);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(45, 17);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "CC1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(110, 73);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(45, 17);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.Text = "CC2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(205, 50);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(45, 17);
-            this.radioButton3.TabIndex = 5;
-            this.radioButton3.Text = "CC3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(205, 73);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(45, 17);
-            this.radioButton4.TabIndex = 6;
-            this.radioButton4.Text = "CC4";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.openFileDialog2.FileName = "openFileDialog1";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(574, 437);
+            this.ClientSize = new System.Drawing.Size(574, 511);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
@@ -675,14 +674,14 @@
             this.tabControl.ResumeLayout(false);
             this.tabPageCertificate.ResumeLayout(false);
             this.tabPageCertificate.PerformLayout();
-            this.tabPageHWR.ResumeLayout(false);
-            this.tabPageHWR.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.tabPageHWR.ResumeLayout(false);
+            this.tabPageHWR.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }

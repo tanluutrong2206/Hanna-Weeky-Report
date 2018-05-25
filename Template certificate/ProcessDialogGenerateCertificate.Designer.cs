@@ -1,6 +1,6 @@
 ﻿namespace Template_certificate
 {
-    partial class ProcessDialog
+    partial class ProcessDialogGenerateCertificate
     {
         /// <summary>
         /// Required designer variable.

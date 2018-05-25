@@ -559,19 +559,14 @@ namespace Template_certificate
 
         private void renderPdfBtn_Click(object sender, EventArgs e)
         {
-            ProcessDialog dialog = new ProcessDialog(this, false);
+            ProcessDialogGenerateCertificate dialog = new ProcessDialogGenerateCertificate(this, false);
             dialog.ShowDialog();
         }
 
         private void renderAndUploadBtn_Click(object sender, EventArgs e)
         {
-            ProcessDialog dialog = new ProcessDialog(this, true);
+            ProcessDialogGenerateCertificate dialog = new ProcessDialogGenerateCertificate(this, true);
             dialog.ShowDialog();
-        }
-
-        private void tabPageHWR_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void previewBtn_Click(object sender, EventArgs e)
