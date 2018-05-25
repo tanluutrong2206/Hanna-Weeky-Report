@@ -58,16 +58,16 @@
             this.chooseFileBtn = new System.Windows.Forms.Button();
             this.tabPageHWR = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCC6 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCC2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCC5 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCC1 = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.reportedDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.previewBtn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.generateHWR = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -78,6 +78,12 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.radioButtonCC8 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCC4 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCC7 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCC3 = new System.Windows.Forms.RadioButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl.SuspendLayout();
             this.tabPageCertificate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -85,17 +91,22 @@
             this.tabPageHWR.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.tabPageCertificate);
             this.tabControl.Controls.Add(this.tabPageHWR);
-            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Location = new System.Drawing.Point(0, 3);
             this.tabControl.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(574, 509);
+            this.tabControl.Size = new System.Drawing.Size(569, 535);
             this.tabControl.TabIndex = 0;
             // 
             // tabPageCertificate
@@ -113,7 +124,7 @@
             this.tabPageCertificate.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.tabPageCertificate.Name = "tabPageCertificate";
             this.tabPageCertificate.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.tabPageCertificate.Size = new System.Drawing.Size(566, 483);
+            this.tabPageCertificate.Size = new System.Drawing.Size(561, 509);
             this.tabPageCertificate.TabIndex = 0;
             this.tabPageCertificate.Text = "Certificate";
             this.tabPageCertificate.UseVisualStyleBackColor = true;
@@ -447,11 +458,9 @@
             // 
             // tabPageHWR
             // 
+            this.tabPageHWR.AutoScroll = true;
+            this.tabPageHWR.Controls.Add(this.splitContainer1);
             this.tabPageHWR.Controls.Add(this.groupBox2);
-            this.tabPageHWR.Controls.Add(this.label7);
-            this.tabPageHWR.Controls.Add(this.previewBtn);
-            this.tabPageHWR.Controls.Add(this.button3);
-            this.tabPageHWR.Controls.Add(this.button4);
             this.tabPageHWR.Controls.Add(this.textBox3);
             this.tabPageHWR.Controls.Add(this.dataGridView2);
             this.tabPageHWR.Controls.Add(this.textBox5);
@@ -461,17 +470,21 @@
             this.tabPageHWR.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.tabPageHWR.Name = "tabPageHWR";
             this.tabPageHWR.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.tabPageHWR.Size = new System.Drawing.Size(566, 483);
+            this.tabPageHWR.Size = new System.Drawing.Size(561, 509);
             this.tabPageHWR.TabIndex = 1;
             this.tabPageHWR.Text = "HWR";
             this.tabPageHWR.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.radioButtonCC8);
+            this.groupBox2.Controls.Add(this.radioButtonCC4);
+            this.groupBox2.Controls.Add(this.radioButtonCC7);
+            this.groupBox2.Controls.Add(this.radioButtonCC3);
+            this.groupBox2.Controls.Add(this.radioButtonCC6);
+            this.groupBox2.Controls.Add(this.radioButtonCC2);
+            this.groupBox2.Controls.Add(this.radioButtonCC5);
+            this.groupBox2.Controls.Add(this.radioButtonCC1);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.reportedDate);
             this.groupBox2.Controls.Add(this.label4);
@@ -482,47 +495,46 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "More Informations";
             // 
-            // radioButton4
+            // radioButtonCC6
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(205, 73);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(45, 17);
-            this.radioButton4.TabIndex = 6;
-            this.radioButton4.Text = "CC4";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButtonCC6.AutoSize = true;
+            this.radioButtonCC6.Location = new System.Drawing.Point(205, 73);
+            this.radioButtonCC6.Name = "radioButtonCC6";
+            this.radioButtonCC6.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonCC6.TabIndex = 6;
+            this.radioButtonCC6.Text = "CC6";
+            this.radioButtonCC6.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButtonCC2
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(205, 50);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(45, 17);
-            this.radioButton3.TabIndex = 5;
-            this.radioButton3.Text = "CC3";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButtonCC2.AutoSize = true;
+            this.radioButtonCC2.Location = new System.Drawing.Point(205, 50);
+            this.radioButtonCC2.Name = "radioButtonCC2";
+            this.radioButtonCC2.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonCC2.TabIndex = 5;
+            this.radioButtonCC2.Text = "CC2";
+            this.radioButtonCC2.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButtonCC5
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(110, 73);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(45, 17);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.Text = "CC2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonCC5.AutoSize = true;
+            this.radioButtonCC5.Location = new System.Drawing.Point(110, 73);
+            this.radioButtonCC5.Name = "radioButtonCC5";
+            this.radioButtonCC5.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonCC5.TabIndex = 4;
+            this.radioButtonCC5.Text = "CC5";
+            this.radioButtonCC5.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioButtonCC1
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(110, 50);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(45, 17);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "CC1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonCC1.AutoSize = true;
+            this.radioButtonCC1.Checked = true;
+            this.radioButtonCC1.Location = new System.Drawing.Point(110, 50);
+            this.radioButtonCC1.Name = "radioButtonCC1";
+            this.radioButtonCC1.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonCC1.TabIndex = 3;
+            this.radioButtonCC1.Text = "CC1";
+            this.radioButtonCC1.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -553,7 +565,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(36, 381);
+            this.label7.Location = new System.Drawing.Point(32, 13);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 13);
@@ -563,7 +575,7 @@
             // previewBtn
             // 
             this.previewBtn.Font = new System.Drawing.Font("Segoe MDL2 Assets", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previewBtn.Location = new System.Drawing.Point(8, 375);
+            this.previewBtn.Location = new System.Drawing.Point(4, 7);
             this.previewBtn.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.previewBtn.Name = "previewBtn";
             this.previewBtn.Size = new System.Drawing.Size(24, 22);
@@ -572,20 +584,21 @@
             this.previewBtn.UseVisualStyleBackColor = true;
             this.previewBtn.Click += new System.EventHandler(this.previewBtn_Click);
             // 
-            // button3
+            // generateHWR
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(479, 376);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(76, 22);
-            this.button3.TabIndex = 37;
-            this.button3.Text = "Generate";
-            this.button3.UseVisualStyleBackColor = true;
+            this.generateHWR.Enabled = false;
+            this.generateHWR.Location = new System.Drawing.Point(475, 8);
+            this.generateHWR.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.generateHWR.Name = "generateHWR";
+            this.generateHWR.Size = new System.Drawing.Size(76, 22);
+            this.generateHWR.TabIndex = 37;
+            this.generateHWR.Text = "Generate";
+            this.generateHWR.UseVisualStyleBackColor = true;
+            this.generateHWR.Click += new System.EventHandler(this.generateHWR_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(398, 376);
+            this.button4.Location = new System.Drawing.Point(394, 8);
             this.button4.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(74, 22);
@@ -658,14 +671,87 @@
             // 
             this.openFileDialog2.FileName = "openFileDialog1";
             // 
+            // radioButtonCC8
+            // 
+            this.radioButtonCC8.AutoSize = true;
+            this.radioButtonCC8.Location = new System.Drawing.Point(402, 73);
+            this.radioButtonCC8.Name = "radioButtonCC8";
+            this.radioButtonCC8.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonCC8.TabIndex = 10;
+            this.radioButtonCC8.Text = "CC8";
+            this.radioButtonCC8.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCC4
+            // 
+            this.radioButtonCC4.AutoSize = true;
+            this.radioButtonCC4.Location = new System.Drawing.Point(402, 50);
+            this.radioButtonCC4.Name = "radioButtonCC4";
+            this.radioButtonCC4.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonCC4.TabIndex = 9;
+            this.radioButtonCC4.Text = "CC4";
+            this.radioButtonCC4.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCC7
+            // 
+            this.radioButtonCC7.AutoSize = true;
+            this.radioButtonCC7.Location = new System.Drawing.Point(307, 73);
+            this.radioButtonCC7.Name = "radioButtonCC7";
+            this.radioButtonCC7.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonCC7.TabIndex = 8;
+            this.radioButtonCC7.Text = "CC7";
+            this.radioButtonCC7.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCC3
+            // 
+            this.radioButtonCC3.AutoSize = true;
+            this.radioButtonCC3.Location = new System.Drawing.Point(307, 50);
+            this.radioButtonCC3.Name = "radioButtonCC3";
+            this.radioButtonCC3.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonCC3.TabIndex = 7;
+            this.radioButtonCC3.Text = "CC3";
+            this.radioButtonCC3.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Template_certificate.Properties.Resources.CC1;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(445, 492);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(8, 375);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.label7);
+            this.splitContainer1.Panel1.Controls.Add(this.button4);
+            this.splitContainer1.Panel1.Controls.Add(this.generateHWR);
+            this.splitContainer1.Panel1.Controls.Add(this.previewBtn);
+            this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(548, 127);
+            this.splitContainer1.SplitterDistance = 38;
+            this.splitContainer1.TabIndex = 42;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(574, 511);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(569, 541);
             this.Controls.Add(this.tabControl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.MaximizeBox = false;
             this.Name = "Main";
@@ -682,6 +768,13 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -719,7 +812,7 @@
         private System.Windows.Forms.TabPage tabPageHWR;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button generateHWR;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -731,13 +824,19 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button previewBtn;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButtonCC6;
+        private System.Windows.Forms.RadioButton radioButtonCC2;
+        private System.Windows.Forms.RadioButton radioButtonCC5;
+        private System.Windows.Forms.RadioButton radioButtonCC1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker reportedDate;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RadioButton radioButtonCC8;
+        private System.Windows.Forms.RadioButton radioButtonCC4;
+        private System.Windows.Forms.RadioButton radioButtonCC7;
+        private System.Windows.Forms.RadioButton radioButtonCC3;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

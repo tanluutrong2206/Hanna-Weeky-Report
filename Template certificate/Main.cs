@@ -1,7 +1,4 @@
-﻿using Google.Apis.Auth.OAuth2;
-using Google.Apis.Drive.v3;
-using Google.Apis.Services;
-using SelectPdf;
+﻿using SelectPdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +23,7 @@ namespace Template_certificate
         private CheckBox headerCheckBox = new CheckBox();
         private string connectionString = null;
         private bool selectedFile = false;
+        private bool previewTemplate = false;
 
         private enum comparison
         {
@@ -161,7 +159,7 @@ namespace Template_certificate
 
         private DataGridViewCheckBoxColumn CreateCheckBoxColumn()
         {
-            DataGridViewCheckBoxColumn checkBoxColumn =  new DataGridViewCheckBoxColumn();
+            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
             checkBoxColumn.HeaderText = "";
             checkBoxColumn.Width = 30;
             checkBoxColumn.Name = "checkBoxColumn";
@@ -570,6 +568,11 @@ namespace Template_certificate
         }
 
         private void previewBtn_Click(object sender, EventArgs e)
+        {
+            splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
+        }
+
+        private void generateHWR_Click(object sender, EventArgs e)
         {
 
         }
