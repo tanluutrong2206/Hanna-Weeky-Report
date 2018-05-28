@@ -574,7 +574,8 @@ namespace Template_certificate
 
         private void generateHWR_Click(object sender, EventArgs e)
         {
-
+            ProcessDialogHWR processDialogHWR = new ProcessDialogHWR(this);
+            processDialogHWR.ShowDialog();
         }
     }
 }
