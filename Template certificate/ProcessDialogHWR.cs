@@ -33,7 +33,9 @@ namespace Template_certificate
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             HtmlToImage htmlToImage = new HtmlToImage();
-            Image img = htmlToImage.ConvertHtmlString(contentHtml);
+
+            string html = string.Format(contentHtml, 22);
+            Image img = htmlToImage.ConvertHtmlString(html);
 
             ////TODO: create new file first
             FileStream stream = File.Open("D:/Image/testHWR.png", FileMode.Create);

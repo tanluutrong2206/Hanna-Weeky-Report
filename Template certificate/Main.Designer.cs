@@ -33,7 +33,7 @@
             this.renderAndUploadBtn = new System.Windows.Forms.Button();
             this.renderPdfBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
-            this.excelPath = new System.Windows.Forms.TextBox();
+            this.excelPathCertificate = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.filterBtn = new System.Windows.Forms.Button();
@@ -53,7 +53,7 @@
             this.and_orCbx2 = new System.Windows.Forms.ComboBox();
             this.and_orCbx1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.folderPath = new System.Windows.Forms.TextBox();
+            this.folderPathCertificate = new System.Windows.Forms.TextBox();
             this.chooseFolder = new System.Windows.Forms.Button();
             this.chooseFileBtn = new System.Windows.Forms.Button();
             this.tabPageHWR = new System.Windows.Forms.TabPage();
@@ -75,9 +75,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.reportedDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.excelPathHWR = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.folderPathHWR = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -114,10 +114,10 @@
             this.tabPageCertificate.Controls.Add(this.renderAndUploadBtn);
             this.tabPageCertificate.Controls.Add(this.renderPdfBtn);
             this.tabPageCertificate.Controls.Add(this.cancelBtn);
-            this.tabPageCertificate.Controls.Add(this.excelPath);
+            this.tabPageCertificate.Controls.Add(this.excelPathCertificate);
             this.tabPageCertificate.Controls.Add(this.dataGridView1);
             this.tabPageCertificate.Controls.Add(this.groupBox1);
-            this.tabPageCertificate.Controls.Add(this.folderPath);
+            this.tabPageCertificate.Controls.Add(this.folderPathCertificate);
             this.tabPageCertificate.Controls.Add(this.chooseFolder);
             this.tabPageCertificate.Controls.Add(this.chooseFileBtn);
             this.tabPageCertificate.Location = new System.Drawing.Point(4, 22);
@@ -164,15 +164,15 @@
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // excelPath
+            // excelPathCertificate
             // 
-            this.excelPath.Location = new System.Drawing.Point(6, 6);
-            this.excelPath.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.excelPath.Name = "excelPath";
-            this.excelPath.ReadOnly = true;
-            this.excelPath.Size = new System.Drawing.Size(407, 20);
-            this.excelPath.TabIndex = 32;
-            this.excelPath.Click += new System.EventHandler(this.chooseFileBtn_Click);
+            this.excelPathCertificate.Location = new System.Drawing.Point(6, 6);
+            this.excelPathCertificate.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.excelPathCertificate.Name = "excelPathCertificate";
+            this.excelPathCertificate.ReadOnly = true;
+            this.excelPathCertificate.Size = new System.Drawing.Size(407, 20);
+            this.excelPathCertificate.TabIndex = 32;
+            this.excelPathCertificate.Click += new System.EventHandler(this.chooseFileBtn_Click);
             // 
             // dataGridView1
             // 
@@ -424,15 +424,15 @@
             this.button2.Text = "Ok";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // folderPath
+            // folderPathCertificate
             // 
-            this.folderPath.Location = new System.Drawing.Point(6, 41);
-            this.folderPath.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.folderPath.Name = "folderPath";
-            this.folderPath.ReadOnly = true;
-            this.folderPath.Size = new System.Drawing.Size(407, 20);
-            this.folderPath.TabIndex = 34;
-            this.folderPath.Click += new System.EventHandler(this.chooseFolder_Click);
+            this.folderPathCertificate.Location = new System.Drawing.Point(6, 41);
+            this.folderPathCertificate.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.folderPathCertificate.Name = "folderPathCertificate";
+            this.folderPathCertificate.ReadOnly = true;
+            this.folderPathCertificate.Size = new System.Drawing.Size(407, 20);
+            this.folderPathCertificate.TabIndex = 34;
+            this.folderPathCertificate.Click += new System.EventHandler(this.chooseFolder_Click);
             // 
             // chooseFolder
             // 
@@ -461,9 +461,9 @@
             this.tabPageHWR.AutoScroll = true;
             this.tabPageHWR.Controls.Add(this.splitContainer1);
             this.tabPageHWR.Controls.Add(this.groupBox2);
-            this.tabPageHWR.Controls.Add(this.textBox3);
+            this.tabPageHWR.Controls.Add(this.excelPathHWR);
             this.tabPageHWR.Controls.Add(this.dataGridView2);
-            this.tabPageHWR.Controls.Add(this.textBox5);
+            this.tabPageHWR.Controls.Add(this.folderPathHWR);
             this.tabPageHWR.Controls.Add(this.button8);
             this.tabPageHWR.Controls.Add(this.button9);
             this.tabPageHWR.Location = new System.Drawing.Point(4, 22);
@@ -509,7 +509,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(394, 8);
+            this.button4.Location = new System.Drawing.Point(391, 8);
             this.button4.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(74, 22);
@@ -520,7 +520,7 @@
             // 
             // generateHWR
             // 
-            this.generateHWR.Location = new System.Drawing.Point(475, 8);
+            this.generateHWR.Location = new System.Drawing.Point(472, 8);
             this.generateHWR.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.generateHWR.Name = "generateHWR";
             this.generateHWR.Size = new System.Drawing.Size(76, 22);
@@ -680,15 +680,15 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Reported Date";
             // 
-            // textBox3
+            // excelPathHWR
             // 
-            this.textBox3.Location = new System.Drawing.Point(8, 7);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(407, 20);
-            this.textBox3.TabIndex = 32;
-            this.textBox3.Click += new System.EventHandler(this.chooseFileBtn_Click);
+            this.excelPathHWR.Location = new System.Drawing.Point(8, 7);
+            this.excelPathHWR.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.excelPathHWR.Name = "excelPathHWR";
+            this.excelPathHWR.ReadOnly = true;
+            this.excelPathHWR.Size = new System.Drawing.Size(407, 20);
+            this.excelPathHWR.TabIndex = 32;
+            this.excelPathHWR.Click += new System.EventHandler(this.chooseFileBtn_Click);
             // 
             // dataGridView2
             // 
@@ -704,15 +704,15 @@
             this.dataGridView2.Size = new System.Drawing.Size(548, 180);
             this.dataGridView2.TabIndex = 30;
             // 
-            // textBox5
+            // folderPathHWR
             // 
-            this.textBox5.Location = new System.Drawing.Point(8, 43);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(407, 20);
-            this.textBox5.TabIndex = 34;
-            this.textBox5.Click += new System.EventHandler(this.chooseFolder_Click);
+            this.folderPathHWR.Location = new System.Drawing.Point(8, 43);
+            this.folderPathHWR.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.folderPathHWR.Name = "folderPathHWR";
+            this.folderPathHWR.ReadOnly = true;
+            this.folderPathHWR.Size = new System.Drawing.Size(407, 20);
+            this.folderPathHWR.TabIndex = 34;
+            this.folderPathHWR.Click += new System.EventHandler(this.chooseFolder_Click);
             // 
             // button8
             // 
@@ -786,7 +786,7 @@
         private System.Windows.Forms.Button renderAndUploadBtn;
         private System.Windows.Forms.Button renderPdfBtn;
         private System.Windows.Forms.Button cancelBtn;
-        private System.Windows.Forms.TextBox excelPath;
+        private System.Windows.Forms.TextBox excelPathCertificate;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button filterBtn;
@@ -806,7 +806,7 @@
         private System.Windows.Forms.ComboBox and_orCbx2;
         private System.Windows.Forms.ComboBox and_orCbx1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox folderPath;
+        private System.Windows.Forms.TextBox folderPathCertificate;
         private System.Windows.Forms.Button chooseFolder;
         private System.Windows.Forms.Button chooseFileBtn;
         private System.Windows.Forms.TabPage tabPageHWR;
@@ -814,9 +814,9 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button generateHWR;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox excelPathHWR;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox folderPathHWR;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog2;

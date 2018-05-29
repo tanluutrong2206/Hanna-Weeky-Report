@@ -23,7 +23,6 @@ namespace Template_certificate
         private CheckBox headerCheckBox = new CheckBox();
         private string connectionString = null;
         private bool selectedFile = false;
-        private bool previewTemplate = false;
 
         private enum comparison
         {
@@ -38,6 +37,12 @@ namespace Template_certificate
             Contains,
             Does_not_contain,
         }
+
+        private enum Certificate
+        {
+            CC1, CC2, CC3, CC4, CC5, CC6, CC7, CC8
+        }
+
         private string queryCondition = "";
 
         public Main()
@@ -58,31 +63,75 @@ namespace Template_certificate
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                //user selected file
-                //set file name to text box
-                excelPath.Text = openFileDialog1.SafeFileName;
+
 
                 //display file content in grid view
-                displayExcelContentToGridView(openFileDialog1.FileName);
+                if (tabControl.SelectedIndex == 0)  //Certificate
+                {
+                    //user selected file
+                    //set file name to text box
+                    excelPathCertificate.Text = openFileDialog1.SafeFileName;
+                    DisplayExcelCertificateContentToGridView(openFileDialog1.FileName);
+                    groupBox1.Enabled = true;
+                    selectedFile = true;
+
+                    if (selectedFile)
+                    {
+                        renderPdfBtn.Enabled = true;
+                        renderAndUploadBtn.Enabled = true;
+                    }
+                }
+                else
+                {
+                    //user selected file
+                    //set file name to text box
+                    excelPathHWR.Text = openFileDialog1.SafeFileName;
+                    //HWR
+                    DisplayExcelHWRContentToGridView(openFileDialog1.FileName);
+                }
 
                 //display header to combo box for filter
-                displayHeaderToCbx(openFileDialog1.FileName);
+                DisplayHeaderToCbx(openFileDialog1.FileName);
 
-                groupBox1.Enabled = true;
-                selectedFile = true;
 
-                if (selectedFile)
-                {
-                    renderPdfBtn.Enabled = true;
-                    renderAndUploadBtn.Enabled = true;
-                }
                 //auto selected all row
                 headerCheckBox.Checked = true;
                 HeaderCheckBox_Clicked(null, null);
             }
         }
 
-        private void displayHeaderToCbx(string fileName)
+        private void DisplayExcelHWRContentToGridView(string fileName)
+        {
+            dataGridView2.Columns.Clear();
+            dataGridView2.Refresh();
+
+            SetConnectionString(fileName);
+
+            string cc = GetSelectedTemplate();
+
+            try
+            {
+                //Check if any of cell is empty will ignore
+                string query = $"SELECT distinct [Chứng chỉ], [Mã SV], [Danh sách sinh viên] From [{cc}$]";
+                SetDataSourceForGridView(query, dataGridView2);
+
+                AddHeaderCheckBox(dataGridView2);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private string GetSelectedTemplate()
+        {
+            var checkedButton = groupBox2.Controls.OfType<RadioButton>()
+                                      .FirstOrDefault(r => r.Checked);
+
+            return checkedButton.Text;
+        }
+
+        private void DisplayHeaderToCbx(string fileName)
         {
             List<string> headers = new List<string>();
             headers.Add("none");
@@ -92,26 +141,46 @@ namespace Template_certificate
             {
                 headers.Add(dataGridView1.Columns[i].HeaderText);
             }
-            setDataSource(field1, headers);
-            setDataSource(field2, headers);
+            SetDataSource(field1, headers);
+            SetDataSource(field2, headers);
             field2.Enabled = false;
             field2.SelectedIndex = -1;
-            setDataSource(field3, headers);
+            SetDataSource(field3, headers);
             field3.Enabled = false;
             field3.SelectedIndex = -1;
 
         }
 
-        private void setDataSource(ComboBox field, List<string> headers)
+        private void SetDataSource(ComboBox field, List<string> headers)
         {
             field.BindingContext = new BindingContext();
             field.DataSource = headers;
         }
 
-        private void displayExcelContentToGridView(string fileName)
+        private void DisplayExcelCertificateContentToGridView(string fileName)
         {
             dataGridView1.Columns.Clear();
             dataGridView1.Refresh();
+
+            SetConnectionString(fileName);
+
+            try
+            {
+                //Check if any of cell is empty will ignore
+                string query = "SELECT * From [Sheet1$] Where [Mã sinh viên] is not null and [Họ và tên] is not null and [Tên chứng chỉ] is not null and [Ngày hoàn thành ] is not null and [Tên chứng chỉ (tiếng anh)] is not null and [Số CC] is not null and [Email] is not null";
+                SetDataSourceForGridView(query, dataGridView1);
+
+                AddHeaderCheckBox(dataGridView1);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void SetConnectionString(string fileName)
+        {
             if (Path.GetExtension(fileName).Equals(".xls"))
             {
                 //excel old version. Before 2007
@@ -121,40 +190,33 @@ namespace Template_certificate
             {
                 connectionString = string.Format(Excel07ConString, fileName);
             }
-            try
-            {
-                //Check if any of cell is empty will ignore
-                setDataSourceForGridView("SELECT * From [Sheet1$] Where [Mã sinh viên] is not null and [Họ và tên] is not null and [Tên chứng chỉ] is not null and [Ngày hoàn thành ] is not null and [Tên chứng chỉ (tiếng anh)] is not null and [Số CC] is not null");
+        }
 
-                //add check box column to data grid view
-                //Add a CheckBox Column to the DataGridView Header Cell.
+        private void AddHeaderCheckBox(DataGridView dataGridView)
+        {
+            //add check box column to data grid view
+            //Add a CheckBox Column to the DataGridView Header Cell.
 
-                //Find the Location of Header Cell.
-                Point headerCellLocation = this.dataGridView1.GetCellDisplayRectangle(0, -1, true).Location;
+            //Find the Location of Header Cell.
+            Point headerCellLocation = dataGridView.GetCellDisplayRectangle(0, -1, true).Location;
 
-                //Place the Header CheckBox in the Location of the Header Cell.
-                headerCheckBox.Location = new Point(headerCellLocation.X + 8, headerCellLocation.Y + 2);
-                headerCheckBox.BackColor = System.Drawing.Color.White;
-                headerCheckBox.Size = new Size(18, 18);
+            //Place the Header CheckBox in the Location of the Header Cell.
+            headerCheckBox.Location = new Point(headerCellLocation.X + 8, headerCellLocation.Y + 2);
+            headerCheckBox.BackColor = System.Drawing.Color.White;
+            headerCheckBox.Size = new Size(18, 18);
 
-                //Assign Click event to the Header CheckBox.
-                headerCheckBox.Click += new EventHandler(HeaderCheckBox_Clicked);
-                dataGridView1.Controls.Add(headerCheckBox);
+            //Assign Click event to the Header CheckBox.
+            headerCheckBox.Click += new EventHandler(HeaderCheckBox_Clicked);
+            dataGridView.Controls.Add(headerCheckBox);
 
-                //Add a CheckBox Column to the DataGridView at the first position.
-                DataGridViewCheckBoxColumn checkBoxColumn = CreateCheckBoxColumn();
+            //Add a CheckBox Column to the DataGridView at the first position.
+            DataGridViewCheckBoxColumn checkBoxColumn = CreateCheckBoxColumn();
 
-                dataGridView1.Columns.Insert(0, checkBoxColumn);
-                this.dataGridView1.Columns["checkBoxColumn"].Frozen = true;
+            dataGridView.Columns.Insert(0, checkBoxColumn);
+            dataGridView.Columns["checkBoxColumn"].Frozen = true;
 
-                //Assign Click event to the DataGridView Cell.
-                dataGridView1.CellContentClick += new DataGridViewCellEventHandler(DataGridView_CellClick);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            //Assign Click event to the DataGridView Cell.
+            dataGridView.CellContentClick += new DataGridViewCellEventHandler(DataGridView_CellClick);
         }
 
         private DataGridViewCheckBoxColumn CreateCheckBoxColumn()
@@ -168,7 +230,7 @@ namespace Template_certificate
             return checkBoxColumn;
         }
 
-        private void setDataSourceForGridView(string query)
+        private void SetDataSourceForGridView(string query, DataGridView dataGridView)
         {
             try
             {
@@ -187,7 +249,7 @@ namespace Template_certificate
                             con.Close();
 
                             //Populate DataGridView.
-                            dataGridView1.DataSource = dt;
+                            dataGridView.DataSource = dt;
                         }
                     }
                 }
@@ -200,7 +262,25 @@ namespace Template_certificate
 
         private void HeaderCheckBox_Clicked(object sender, EventArgs e)
         {
+            //Necessary to end the edit mode of the Cell.
+            //dataGridView1.EndEdit();
 
+            //Loop and check and uncheck all row CheckBoxes based on Header Cell CheckBox.
+            DataGridView dataGridView;
+            if (tabControl.SelectedIndex ==0)
+            {
+                dataGridView = dataGridView1;
+            }
+            else
+            {
+                dataGridView = dataGridView2;
+            }
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                DataGridViewCheckBoxCell checkBox = (row.Cells["checkBoxColumn"] as DataGridViewCheckBoxCell);
+                checkBox.Value = headerCheckBox.Checked;
+            }
+            dataGridView.EndEdit();
         }
 
         private void DataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -230,9 +310,18 @@ namespace Template_certificate
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                //user selected folder
-                //set folder path to text box
-                folderPath.Text = folderBrowserDialog1.SelectedPath;
+                if (tabControl.SelectedIndex == 0)
+                {
+                    //user selected folder
+                    //set folder path to text box
+                    folderPathCertificate.Text = folderBrowserDialog1.SelectedPath;
+                }
+                else
+                {
+                    //user selected folder
+                    //set folder path to text box
+                    folderPathHWR.Text = folderBrowserDialog1.SelectedPath;
+                }
             }
         }
 
@@ -279,24 +368,24 @@ namespace Template_certificate
             }
             else
             {
-                queryCondition += getSortData(field1, comparison1, compare1) + " ";
+                queryCondition += GetSortData(field1, comparison1, compare1) + " ";
                 if (field2.Enabled && comparison2.Enabled)
                 {
                     queryCondition += and_orCbx1.SelectedItem + " ";
-                    queryCondition += getSortData(field2, comparison2, compare2);
+                    queryCondition += GetSortData(field2, comparison2, compare2);
                 }
                 if (field3.Enabled && comparison3.Enabled)
                 {
                     queryCondition += and_orCbx2.SelectedItem + " ";
-                    queryCondition += getSortData(field3, comparison3, compare3);
+                    queryCondition += GetSortData(field3, comparison3, compare3);
                 }
                 query = $"SELECT * From [Sheet1$] where {queryCondition}";
             }
-            setDataSourceForGridView(query);
+            SetDataSourceForGridView(query, dataGridView1);
             queryCondition = "";
         }
 
-        private string getSortData(ComboBox field, ComboBox comparisonCbx, TextBox compare)
+        private string GetSortData(ComboBox field, ComboBox comparisonCbx, TextBox compare)
         {
             string query = "";
             string compareTxt = compare.Text.Trim();
@@ -547,7 +636,7 @@ namespace Template_certificate
 
         internal string GetFolderPath()
         {
-            return folderPath.Text;
+            return folderPathCertificate.Text;
         }
 
         internal DataGridView GetDataGridView()
