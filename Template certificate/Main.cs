@@ -112,8 +112,10 @@ namespace Template_certificate
             try
             {
                 //Check if any of cell is empty will ignore
-                string query = $"SELECT distinct [Chứng chỉ], [Mã SV], [Danh sách sinh viên] From [{cc}$]";
-                SetDataSourceForGridView(query, dataGridView2);
+                string query = $"SELECT distinct [Chứng chỉ], [Mã SV], [Danh sách sinh viên] From [{cc}$] where [Chứng chỉ] = '{cc}'";
+                DataTable dt = GetDataSourceForGridView(query);
+                //Populate DataGridView.
+                dataGridView2.DataSource = dt;
 
                 AddHeaderCheckBox(dataGridView2);
             }
@@ -123,7 +125,7 @@ namespace Template_certificate
             }
         }
 
-        private string GetSelectedTemplate()
+        internal string GetSelectedTemplate()
         {
             var checkedButton = groupBox2.Controls.OfType<RadioButton>()
                                       .FirstOrDefault(r => r.Checked);
@@ -168,7 +170,8 @@ namespace Template_certificate
             {
                 //Check if any of cell is empty will ignore
                 string query = "SELECT * From [Sheet1$] Where [Mã sinh viên] is not null and [Họ và tên] is not null and [Tên chứng chỉ] is not null and [Ngày hoàn thành ] is not null and [Tên chứng chỉ (tiếng anh)] is not null and [Số CC] is not null and [Email] is not null";
-                SetDataSourceForGridView(query, dataGridView1);
+                DataTable dt = GetDataSourceForGridView(query);
+                dataGridView1.DataSource = dt;
 
                 AddHeaderCheckBox(dataGridView1);
             }
@@ -230,7 +233,7 @@ namespace Template_certificate
             return checkBoxColumn;
         }
 
-        private void SetDataSourceForGridView(string query, DataGridView dataGridView)
+        internal DataTable GetDataSourceForGridView(string query)
         {
             try
             {
@@ -248,8 +251,7 @@ namespace Template_certificate
                             oda.Fill(dt);
                             con.Close();
 
-                            //Populate DataGridView.
-                            dataGridView.DataSource = dt;
+                            return dt;
                         }
                     }
                 }
@@ -257,6 +259,7 @@ namespace Template_certificate
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 
@@ -267,7 +270,7 @@ namespace Template_certificate
 
             //Loop and check and uncheck all row CheckBoxes based on Header Cell CheckBox.
             DataGridView dataGridView;
-            if (tabControl.SelectedIndex ==0)
+            if (tabControl.SelectedIndex == 0)
             {
                 dataGridView = dataGridView1;
             }
@@ -288,12 +291,12 @@ namespace Template_certificate
             //Check to ensure that the row CheckBox is clicked.
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
-                DataGridViewCheckBoxCell boxCell = dataGridView1.Rows[e.RowIndex].Cells["checkBoxColumn"] as DataGridViewCheckBoxCell;
+                DataGridViewCheckBoxCell boxCell = GetDataGridView().Rows[e.RowIndex].Cells["checkBoxColumn"] as DataGridViewCheckBoxCell;
                 boxCell.Value = !Convert.ToBoolean(boxCell.Value);
 
                 //Loop to verify whether all row CheckBoxes are checked or not.
                 bool isChecked = true;
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                foreach (DataGridViewRow row in GetDataGridView().Rows)
                 {
                     if (Convert.ToBoolean(row.Cells["checkBoxColumn"]
                         .EditedFormattedValue) == false)
@@ -381,7 +384,8 @@ namespace Template_certificate
                 }
                 query = $"SELECT * From [Sheet1$] where {queryCondition}";
             }
-            SetDataSourceForGridView(query, dataGridView1);
+            DataTable dt = GetDataSourceForGridView(query);
+            dataGridView1.DataSource = dt;
             queryCondition = "";
         }
 
@@ -636,12 +640,31 @@ namespace Template_certificate
 
         internal string GetFolderPath()
         {
-            return folderPathCertificate.Text;
+            if (tabControl.SelectedIndex == 0)
+            {
+                return folderPathCertificate.Text;
+            }
+            else
+            {
+                return folderPathHWR.Text;
+            }
         }
 
         internal DataGridView GetDataGridView()
         {
-            return dataGridView1;
+            if (tabControl.SelectedIndex == 0)
+            {
+                return dataGridView1;
+            }
+            else
+            {
+                return dataGridView2;
+            }
+        }
+
+        internal DateTime GetReportedDate()
+        {
+            return reportedDate.Value;
         }
 
         private void renderPdfBtn_Click(object sender, EventArgs e)
