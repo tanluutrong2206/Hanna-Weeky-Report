@@ -581,6 +581,7 @@
             this.radioButtonCC8.TabIndex = 10;
             this.radioButtonCC8.Text = "CC8";
             this.radioButtonCC8.UseVisualStyleBackColor = true;
+            this.radioButtonCC8.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
             // 
             // radioButtonCC4
             // 
@@ -591,6 +592,7 @@
             this.radioButtonCC4.TabIndex = 9;
             this.radioButtonCC4.Text = "CC4";
             this.radioButtonCC4.UseVisualStyleBackColor = true;
+            this.radioButtonCC4.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
             // 
             // radioButtonCC7
             // 
@@ -601,6 +603,7 @@
             this.radioButtonCC7.TabIndex = 8;
             this.radioButtonCC7.Text = "CC7";
             this.radioButtonCC7.UseVisualStyleBackColor = true;
+            this.radioButtonCC7.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
             // 
             // radioButtonCC3
             // 
@@ -611,6 +614,7 @@
             this.radioButtonCC3.TabIndex = 7;
             this.radioButtonCC3.Text = "CC3";
             this.radioButtonCC3.UseVisualStyleBackColor = true;
+            this.radioButtonCC3.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
             // 
             // radioButtonCC6
             // 
@@ -621,6 +625,7 @@
             this.radioButtonCC6.TabIndex = 6;
             this.radioButtonCC6.Text = "CC6";
             this.radioButtonCC6.UseVisualStyleBackColor = true;
+            this.radioButtonCC6.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
             // 
             // radioButtonCC2
             // 
@@ -631,6 +636,7 @@
             this.radioButtonCC2.TabIndex = 5;
             this.radioButtonCC2.Text = "CC2";
             this.radioButtonCC2.UseVisualStyleBackColor = true;
+            this.radioButtonCC2.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
             // 
             // radioButtonCC5
             // 
@@ -641,6 +647,7 @@
             this.radioButtonCC5.TabIndex = 4;
             this.radioButtonCC5.Text = "CC5";
             this.radioButtonCC5.UseVisualStyleBackColor = true;
+            this.radioButtonCC5.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
             // 
             // radioButtonCC1
             // 
@@ -653,6 +660,7 @@
             this.radioButtonCC1.TabStop = true;
             this.radioButtonCC1.Text = "CC1";
             this.radioButtonCC1.UseVisualStyleBackColor = true;
+            this.radioButtonCC1.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
             // 
             // label5
             // 
@@ -748,6 +756,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(569, 541);

@@ -21,7 +21,7 @@ namespace Template_certificate
         private string Excel03ConString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties='Excel 8.0;HDR=YES'";
         private string Excel07ConString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 12.0;HDR=YES'";
         private CheckBox headerCheckBox = new CheckBox();
-        private string connectionString = null;
+        private string connectionString = null, fileName;
         private bool selectedFile = false;
 
         private enum comparison
@@ -63,7 +63,11 @@ namespace Template_certificate
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-
+                if (!string.IsNullOrEmpty(fileName) && fileName.Equals(openFileDialog1.FileName))
+                {
+                    return;
+                }
+                fileName = openFileDialog1.FileName;
 
                 //display file content in grid view
                 if (tabControl.SelectedIndex == 0)  //Certificate
@@ -71,7 +75,7 @@ namespace Template_certificate
                     //user selected file
                     //set file name to text box
                     excelPathCertificate.Text = openFileDialog1.SafeFileName;
-                    DisplayExcelCertificateContentToGridView(openFileDialog1.FileName);
+                    DisplayExcelCertificateContentToGridView();
                     groupBox1.Enabled = true;
                     selectedFile = true;
 
@@ -87,12 +91,11 @@ namespace Template_certificate
                     //set file name to text box
                     excelPathHWR.Text = openFileDialog1.SafeFileName;
                     //HWR
-                    DisplayExcelHWRContentToGridView(openFileDialog1.FileName);
+                    DisplayExcelHWRContentToGridView();
                 }
 
                 //display header to combo box for filter
-                DisplayHeaderToCbx(openFileDialog1.FileName);
-
+                DisplayHeaderToCbx();
 
                 //auto selected all row
                 headerCheckBox.Checked = true;
@@ -100,19 +103,19 @@ namespace Template_certificate
             }
         }
 
-        private void DisplayExcelHWRContentToGridView(string fileName)
+        private void DisplayExcelHWRContentToGridView()
         {
             dataGridView2.Columns.Clear();
             dataGridView2.Refresh();
 
-            SetConnectionString(fileName);
+            SetConnectionString();
 
             string cc = GetSelectedTemplate();
 
             try
             {
                 //Check if any of cell is empty will ignore
-                string query = $"SELECT distinct [Chứng chỉ], [Mã SV], [Danh sách sinh viên] From [{cc}$] where [Chứng chỉ] = '{cc}'";
+                string query = $"SELECT distinct [Chứng chỉ], [Mã SV], [Danh sách sinh viên], [Lớp] From [{cc}$] where [Chứng chỉ] = '{cc}'";
                 DataTable dt = GetDataSourceForGridView(query);
                 //Populate DataGridView.
                 dataGridView2.DataSource = dt;
@@ -133,7 +136,7 @@ namespace Template_certificate
             return checkedButton.Text;
         }
 
-        private void DisplayHeaderToCbx(string fileName)
+        private void DisplayHeaderToCbx()
         {
             List<string> headers = new List<string>();
             headers.Add("none");
@@ -150,7 +153,6 @@ namespace Template_certificate
             SetDataSource(field3, headers);
             field3.Enabled = false;
             field3.SelectedIndex = -1;
-
         }
 
         private void SetDataSource(ComboBox field, List<string> headers)
@@ -159,12 +161,12 @@ namespace Template_certificate
             field.DataSource = headers;
         }
 
-        private void DisplayExcelCertificateContentToGridView(string fileName)
+        private void DisplayExcelCertificateContentToGridView()
         {
             dataGridView1.Columns.Clear();
             dataGridView1.Refresh();
 
-            SetConnectionString(fileName);
+            SetConnectionString();
 
             try
             {
@@ -182,7 +184,7 @@ namespace Template_certificate
 
         }
 
-        private void SetConnectionString(string fileName)
+        private void SetConnectionString()
         {
             if (Path.GetExtension(fileName).Equals(".xls"))
             {
@@ -258,8 +260,7 @@ namespace Template_certificate
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                throw e;
             }
         }
 
@@ -688,6 +689,16 @@ namespace Template_certificate
         {
             ProcessDialogHWR processDialogHWR = new ProcessDialogHWR(this);
             processDialogHWR.ShowDialog();
+        }
+
+        private void radioButtonCC_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            if (radioButton.Checked && !string.IsNullOrEmpty(fileName))
+            {
+                DisplayExcelHWRContentToGridView();
+            }
+            pictureBox1.ImageLocation = $@"file:///D:\Funix\Hanna Weekly Report\Template-certificate\Hanna-Weeky-Report\Template certificate\Images/Template cc/{radioButton.Text}.png";
         }
     }
 }

@@ -114,8 +114,14 @@ namespace Template_certificate
             //[Môn], [Exam], [% ques], [% quiz], [% asm], [KL HT tb], [KL học tập đã TH tuần trước], [thời gian còn lại], [%Lab], [Trạng thái môn]
             string htmlTable = "";
             string studyAvg = dt.Rows[0]["KL HT tb"].ToString();
+            string studentClass = dt.Rows[0]["Lớp"].ToString();
             string studyCompletedLastWeek = dt.Rows[0]["KL học tập đã TH tuần trước"].ToString();
             string timeRemain = dt.Rows[0]["thời gian còn lại"].ToString();
+
+            studyAvg = BeautiNumber(studyAvg, "{0:0.0}");
+            studyCompletedLastWeek = BeautiNumber(studyCompletedLastWeek, "{0:0.0}");
+            timeRemain = BeautiNumber(timeRemain, "{0:0}");
+
             foreach (DataRow row in dt.Rows)
             {
                 string course = row["Môn"].ToString();
@@ -125,6 +131,12 @@ namespace Template_certificate
                 string asm = row["% asm"].ToString();
                 string lab = row["%Lab"].ToString();
                 string courseStatus = row["Trạng thái môn"].ToString();
+
+                courseStatus = BeautiNumber(courseStatus, "{0:0.0}");
+                lab = BeautiNumber(lab, "{0:0.0%}");
+                quest = BeautiNumber(quest, "{0:0.0%}");
+                quiz = BeautiNumber(quiz, "{0:0.0%}");
+                asm = BeautiNumber(asm, "{0:0.0%}");
 
                 htmlTable += $@"<tr>
                         <td>{course}</td>
@@ -137,7 +149,15 @@ namespace Template_certificate
                     </tr>";
             }
 
-            string width = Convert.ToDouble(timeRemain) / 26 * 100 + "%";
+            string width = "";
+            if (!string.IsNullOrEmpty(timeRemain))
+            {
+                width = Convert.ToDouble(timeRemain) / 26 * 100 + "%";
+            }
+            else
+            {
+                width = "0%";
+            }
             string[] parameters = { folder, reportedDate.ToString("dd/MM/yyyy"), studentName, studentID, timeRemain, studyAvg, studyCompletedLastWeek, htmlTable, width };
             HtmlToImage htmlToImage = new HtmlToImage();
 
@@ -145,15 +165,41 @@ namespace Template_certificate
             Image img = htmlToImage.ConvertHtmlString(html);
 
             //TODO: create new file first
-            FileStream stream = File.Open(Path.Combine(folderStoragePath, $"{studentID} - {studentName}.png"), FileMode.Create);
+            DirectoryInfo directory = new DirectoryInfo(Path.Combine(folderStoragePath, $"{studentClass}"));
+            if (!directory.Exists)
+            {
+                directory.Create();
+            }
+            FileStream stream = File.Open(Path.Combine(folderStoragePath, $"{studentClass}/{studentID} - {studentName}.png"), FileMode.Create);
             img.Save(stream, ImageFormat.Png);
             stream.Close();
+        }
+
+        private string BeautiNumber(string number, string format)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(number))
+                {
+                    return "N/A";
+                }
+                else
+                {
+                    double dNumber = Convert.ToDouble(number);
+                    return string.Format(format, dNumber);
+                }
+            }
+            catch (Exception)
+            {
+                return "N/A";
+                throw;
+            }
         }
 
         // This event handler updates the progress.
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            resultLabel.Text = ("Processing: " + e.ProgressPercentage.ToString() + "/" + 1);
+            resultLabel.Text = ("Processing: " + e.ProgressPercentage.ToString() + "/" + total);
         }
 
         // This event handler deals with the results of the background operation.
