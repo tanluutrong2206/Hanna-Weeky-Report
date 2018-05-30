@@ -1,5 +1,6 @@
 ﻿using SelectPdf;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,14 +19,11 @@ namespace Template_certificate
     public partial class ProcessDialogHWR : Form
     {
         private readonly main _owner;
-        private readonly string contentHtml = File.ReadAllText(@"D:\Funix\Hanna Weekly Report\Html source\hwr.html");
         private readonly int total;
         private readonly string certificate;
         private readonly DateTime reportedDate;
         private readonly DataGridView dataGridView;
         private string folderStoragePath;
-        private readonly string folder = @"file:///D:\Funix\Hanna Weekly Report\Html source";
-
 
         public ProcessDialogHWR(main parent)
         {
@@ -71,11 +70,12 @@ namespace Template_certificate
                     directory.Create();
                 }
             }
+
             try
             {
-                foreach (DataGridViewRow row in dataGridView.Rows)
+                List<Task> tasks = new List<Task>();
+                Parallel.ForEach(dataGridView.Rows.Cast<DataGridViewRow>(), row =>
                 {
-                    //TODO: (Ms.Hồng Anh required) File excel change the column Tên chứng chỉ (tiếng anh) and Chứng chỉ to single column Mã môn.
                     //check if row has checked in check box
                     if (!backgroundWorker1.CancellationPending && Convert.ToBoolean(row.Cells["checkBoxColumn"].Value))
                     {
@@ -87,14 +87,21 @@ namespace Template_certificate
 
                         DataTable dt = _owner.GetDataSourceForGridView(query);
 
-                        GenerateImage(dt, studentID, studentName, certificate);
-
-                        count++;
-
-                        worker.ReportProgress(count);
+                        tasks.Add(Task.Run(() =>
+                        {
+                            GenerateImage generateImage = new GenerateImage(dt, studentID, studentName, certificate, reportedDate, folderStoragePath);
+                            generateImage.GenerateToImage();
+                        })
+                        .ContinueWith(t => {
+                            count++;
+                            worker.ReportProgress(count);
+                        }));
                     }
+                });
 
-                }
+                // Wait on all the tasks.
+                Task.WaitAll(tasks.ToArray());
+
                 MessageBox.Show("Generate successfull", "Successfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -108,92 +115,6 @@ namespace Template_certificate
             }
         }
 
-        private void GenerateImage(DataTable dt, string studentID, string studentName, string certificate)
-        {
-            //these fields is not change with each student
-            string htmlTable = "";
-            string studyAvg = dt.Rows[0]["KL HT tb"].ToString();
-            string studentClass = dt.Rows[0]["Lớp"].ToString();
-            string studyCompletedLastWeek = dt.Rows[0]["KL học tập đã TH tuần trước"].ToString();
-            string timeRemain = dt.Rows[0]["thời gian còn lại"].ToString();
-
-            studyAvg = BeautiNumber(studyAvg, "{0:0.0}");
-            studyCompletedLastWeek = BeautiNumber(studyCompletedLastWeek, "{0:0.0}");
-            timeRemain = BeautiNumber(timeRemain, "{0:0}");
-
-            foreach (DataRow row in dt.Rows)
-            {
-                string course = row["Môn"].ToString();
-                string exam = row["Exam"].ToString();
-                string quest = row["% ques"].ToString();
-                string quiz = row["% quiz"].ToString();
-                string asm = row["% asm"].ToString();
-                string lab = row["%Lab"].ToString();
-                string courseStatus = row["Trạng thái môn"].ToString();
-
-                courseStatus = BeautiNumber(courseStatus, "{0:0.0}");
-                lab = BeautiNumber(lab, "{0:0.0%}");
-                quest = BeautiNumber(quest, "{0:0.0%}");
-                quiz = BeautiNumber(quiz, "{0:0.0%}");
-                asm = BeautiNumber(asm, "{0:0.0%}");
-
-                htmlTable += $@"<tr>
-                        <td>{course}</td>
-                        <td>{courseStatus}</td>
-                        <td>{quest}</td>
-                        <td>{quiz}</td>
-                        <td>{lab}</td>
-                        <td>{asm}</td>
-                        <td>{exam}</td>
-                    </tr>";
-            }
-
-            string width = "";
-            if (!string.IsNullOrEmpty(timeRemain))
-            {
-                width = Convert.ToDouble(timeRemain) / 26 * 100 + "%";
-            }
-            else
-            {
-                width = "0%";
-            }
-            string[] parameters = { folder, reportedDate.ToString("dd/MM/yyyy"), studentName, studentID, timeRemain, studyAvg, studyCompletedLastWeek, htmlTable, width };
-            HtmlToImage htmlToImage = new HtmlToImage();
-
-            string html = string.Format(contentHtml, parameters);
-            Image img = htmlToImage.ConvertHtmlString(html);
-
-            //TODO: create new file first
-            DirectoryInfo directory = new DirectoryInfo(Path.Combine(folderStoragePath, $"{studentClass}"));
-            if (!directory.Exists)
-            {
-                directory.Create();
-            }
-            FileStream stream = File.Open(Path.Combine(folderStoragePath, $"{studentClass}/{studentID} - {studentName}.png"), FileMode.Create);
-            img.Save(stream, ImageFormat.Png);
-            stream.Close();
-        }
-
-        private string BeautiNumber(string number, string format)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(number))
-                {
-                    return "N/A";
-                }
-                else
-                {
-                    double dNumber = Convert.ToDouble(number);
-                    return string.Format(format, dNumber);
-                }
-            }
-            catch (Exception)
-            {
-                return "N/A";
-                throw;
-            }
-        }
 
         // This event handler updates the progress.
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
