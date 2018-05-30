@@ -23,7 +23,7 @@ namespace Template_certificate
     {
         private string folderStoragePath;
         private readonly DataGridView dataGridView1;
-        private readonly Main _owner;
+        private readonly main _owner;
         private readonly string contentHtml = File.ReadAllText(Path.Combine(Application.ExecutablePath.Remove(Application.ExecutablePath.LastIndexOf("\\")), "Html source\\certificate template.html"));
 
         public string masterFolderId { get; set; }
@@ -61,7 +61,7 @@ namespace Template_certificate
         private const string MASTER_FOLDER_NAME = "Chứng chỉ Funix";
         private string ApplicationName = "Funix's Certificate Generation Automatical";
 
-        public ProcessDialogGenerateCertificate(Main owner, bool isUpload)
+        public ProcessDialogGenerateCertificate(main owner, bool isUpload)
         {
             InitializeComponent();
             this._owner = owner;

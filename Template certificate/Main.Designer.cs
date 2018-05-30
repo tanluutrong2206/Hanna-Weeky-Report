@@ -1,6 +1,6 @@
 ﻿namespace Template_certificate
 {
-    partial class Main
+    partial class main
     {
         /// <summary>
         /// Required designer variable.
@@ -108,6 +108,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(569, 535);
             this.tabControl.TabIndex = 0;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPageCertificate
             // 
@@ -752,7 +753,7 @@
             // 
             this.openFileDialog2.FileName = "openFileDialog1";
             // 
-            // Main
+            // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -763,7 +764,7 @@
             this.Controls.Add(this.tabControl);
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.MaximizeBox = false;
-            this.Name = "Main";
+            this.Name = "main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home - Generate Certificate";
             this.tabControl.ResumeLayout(false);

@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace Template_certificate
 {
-    public partial class Main : Form
+    public partial class main : Form
     {
         private string Excel03ConString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties='Excel 8.0;HDR=YES'";
         private string Excel07ConString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 12.0;HDR=YES'";
@@ -45,7 +45,7 @@ namespace Template_certificate
 
         private string queryCondition = "";
 
-        public Main()
+        public main()
         {
             InitializeComponent();
             groupBox1.Enabled = false;
@@ -689,6 +689,20 @@ namespace Template_certificate
         {
             ProcessDialogHWR processDialogHWR = new ProcessDialogHWR(this);
             processDialogHWR.ShowDialog();
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedIndex == 0)
+            {
+                Text = "Home - Generate Certificate";
+                Update();
+            }
+            else
+            {
+                Text = "Home - Generate HWR";
+                Update();
+            }
         }
 
         private void radioButtonCC_CheckedChanged(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace Template_certificate
 {
     public partial class ProcessDialogHWR : Form
     {
-        private readonly Main _owner;
+        private readonly main _owner;
         private readonly string contentHtml = File.ReadAllText(@"D:\Funix\Hanna Weekly Report\Html source\hwr.html");
         private readonly int total;
         private readonly string certificate;
@@ -26,7 +26,7 @@ namespace Template_certificate
         private readonly string folder = @"file:///D:\Funix\Hanna Weekly Report\Html source";
 
 
-        public ProcessDialogHWR(Main parent)
+        public ProcessDialogHWR(main parent)
         {
             InitializeComponent();
 
@@ -83,7 +83,6 @@ namespace Template_certificate
                         string studentName = row.Cells["Danh sách sinh viên"].Value.ToString();
                         string studentID = row.Cells["Mã SV"].Value.ToString();
 
-                        //[Môn], [Exam], [% ques], [% quiz], [% asm], [KL HT tb], [KL học tập đã TH tuần trước], [thời gian còn lại], [%Lab], [Trạng thái môn]
                         string query = $"Select * from [{certificate}$] where [Mã SV] = '{studentID}' and [Chứng chỉ] = '{certificate}'";
 
                         DataTable dt = _owner.GetDataSourceForGridView(query);
@@ -111,7 +110,7 @@ namespace Template_certificate
 
         private void GenerateImage(DataTable dt, string studentID, string studentName, string certificate)
         {
-            //[Môn], [Exam], [% ques], [% quiz], [% asm], [KL HT tb], [KL học tập đã TH tuần trước], [thời gian còn lại], [%Lab], [Trạng thái môn]
+            //these fields is not change with each student
             string htmlTable = "";
             string studyAvg = dt.Rows[0]["KL HT tb"].ToString();
             string studentClass = dt.Rows[0]["Lớp"].ToString();
