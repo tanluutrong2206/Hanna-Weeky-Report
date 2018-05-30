@@ -220,8 +220,8 @@ namespace Template_certificate
             dataGridView.Columns.Insert(0, checkBoxColumn);
             dataGridView.Columns["checkBoxColumn"].Frozen = true;
 
-            //Assign Click event to the DataGridView Cell.
-            dataGridView.CellContentClick += new DataGridViewCellEventHandler(DataGridView_CellClick);
+            ////Assign Click event to the DataGridView Cell.
+            //dataGridView.CellContentClick += new DataGridViewCellEventHandler(DataGridView_CellClick);
         }
 
         private DataGridViewCheckBoxColumn CreateCheckBoxColumn()
