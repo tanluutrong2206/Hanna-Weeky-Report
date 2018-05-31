@@ -171,7 +171,11 @@
   <ItemGroup>
     <Content Include="Driver\AccessDatabaseEngine.exe" />
     <Content Include="Driver\Net FrameWork 461 32 86 EN.exe" />
+    <Content Include="Html source\bootstrap.min.css" />
     <Content Include="Html source\certificate template.html" />
+    <Content Include="Html source\hwr.css" />
+    <Content Include="Html source\hwr.html" />
+    <Content Include="Html source\myscript.js" />
     <Content Include="Html source\mystyle.css" />
     <Content Include="Images\background.png" />
     <Content Include="Images\Funix director sign.png" />

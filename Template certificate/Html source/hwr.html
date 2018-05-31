@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Certificate template</title>
+
+    <!-- <script src="D:\Funix\Hanna Weekly Report\Html source\myscript.js"></script>
+    <link rel='stylesheet' type='text/css' href='D:\Funix\Hanna Weekly Report\Html source\bootstrap.min.css'>
+    <link rel='stylesheet' type='text/css' href='D:\Funix\Hanna Weekly Report\Html source\hwr.css'> -->
+    <script src="{0}\myscript.js"></script>
+    <link rel='stylesheet' type='text/css' href='{0}\bootstrap.min.css'>
+    <link rel='stylesheet' type='text/css' href='{0}\hwr.css'>
+</head>
+
+<body onload="onload();">
+    <div class="container-fluid">
+        <h1 class="title">HANNAH WEEKLY REPORT (HWR)</h1>
+        <div class="information">
+            <p>Thời điểm báo cáo: {1}</p>
+            <p>Học viên: {2}</p>
+            <p>Mã học viên: {3}</p>
+        </div>
+        <div class="warning">
+            <p class="subtitle">1) Mức cảnh báo</p>
+            <div class="row text">
+                <div class="col-3 panel bg-green" id="green"></div>
+                <div class="col-3 panel bg-yellow" id="yellow"></div>
+                <div class="col-3 panel bg-orange" id="orange"></div>
+                <div class="col-3 panel bg-red" id="red"></div>
+            </div>
+        </div>
+        <div class="time-remain">
+            <p class="subtitle">2) Thời gian còn lại:
+                <span class="text-danger">{4}/{5} tuần</span>
+            </p>
+
+            <div style=clear:both;></div>
+            <div class="progress bg-gray" style="height: 35px; margin: auto; display: block; width: 80%;" id="progress-bar">
+                <div class="progress-bar text" style="float: right; height: 35px; width: {6};" id="time-remain">{4} tuần
+                </div>
+            </div>
+        </div>
+
+        <div class="study-infor">
+            <p class="subtitle">3) Khối lượng học tập trung bình cần thực hiện mỗi tuần trong thời gian còn lại:
+                <span id="number-to-do" class="text-danger">{7}</span>
+                <span class="text-danger">xp/tuần</span>
+            </p>
+            <p class="more-infor">Khối lượng học tập đã thực hiện tuần trước:
+                <span class="text-danger subtitle">{8} xp</span>
+            </p>
+            <p class="subtitle">Chi tiết: </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Môn</th>
+                        <th>Trạng thái (xp)</th>
+                        <th>Ques (%)</th>
+                        <th>Quiz (%)</th>
+                        <th>Lab (%)</th>
+                        <th>Asm (%)</th>
+                        <th>Exam</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {9}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="more-infor">
+            <p class="subtitle">Chi tiết xem tại kqht.funix.edu.vn</p>
+            <i>*)
+                <span class="underline">Ghi chú mức độ cảnh báo:</span>
+
+                <p>Khối lượng công việc cần thực hiện mỗi tuần (xp) trong thời gian còn lại :</p>
+                <ul>
+                    <li>
+                        <span>>=61xp: Cảnh báo đỏ;</span>
+                    </li>
+                    <li>
+                        <span>Từ 31xp – 60xp: Cảnh báo cam;</span>
+                    </li>
+                    <li>
+                        <span>Từ 17xp – 30xp : Cảnh báo vàng;</span>
+                    </li>
+                    <li>
+                        <span>&lt;=16xp : Cảnh báo xanh;</span>
+                    </li>
+                </ul>
+            </i>
+        </div>
+    </div>
+</body>
+
+</html>

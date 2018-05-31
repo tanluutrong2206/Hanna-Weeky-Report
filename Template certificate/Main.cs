@@ -711,6 +711,9 @@ namespace Template_certificate
             if (radioButton.Checked && !string.IsNullOrEmpty(fileName))
             {
                 DisplayExcelHWRContentToGridView();
+                //auto selected all row
+                headerCheckBox.Checked = true;
+                HeaderCheckBox_Clicked(null, null);
             }
             pictureBox1.ImageLocation = $@"file:///D:\Funix\Hanna Weekly Report\Template-certificate\Hanna-Weeky-Report\Template certificate\Images/Template cc/{radioButton.Text}.png";
         }

@@ -1,0 +1,113 @@
+.bg-green {
+    background-color: green;
+}
+
+.bg-yellow {
+    background-color: yellow;
+}
+
+.bg-orange {
+    background-color: #FFC000;
+}
+
+.bg-red {
+    background-color: red;
+}
+
+.row {
+    overflow: hidden;
+    margin: auto;
+    word-wrap: break-word;
+}
+
+.warning .row {
+    width: 50%;
+}
+
+.time-remain .row {
+    width: 80%;
+    white-space: nowrap;
+}
+
+.time-remain {
+    padding-bottom: 30px;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title {
+    text-align: center;
+}
+
+[class*="col-"] {
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+    text-align: center;
+}
+
+.col-26 {
+    -ms-flex: 0 0 calc(100%/26);
+    flex: 0 0 calc(100%/26);
+    max-width: calc(100%/26);
+    background-color: gray;
+    position: relative;
+    width: 100%;
+    min-height: 50px;
+    overflow: visible;
+}
+
+.text-danger {
+    font-size: 120%;
+}
+
+.container-fluid {
+    border: thick double #F4B083;
+    background-color: #FFF2CC;
+    padding: 0 15px;
+}
+
+.subtitle {
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+    list-style-position: outside;
+}
+
+li span{
+    position: relative;
+    left: 25px;
+}
+ul li:before {
+    content: '✓';
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+.text {
+    font-weight: bold;
+    color: black;
+}
+
+.bg-gray {
+    background-color: gray !important;
+}
+
+.bg-red {
+    background-color: red !important;
+}
