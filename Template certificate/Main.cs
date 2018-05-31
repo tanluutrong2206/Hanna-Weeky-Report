@@ -92,6 +92,8 @@ namespace Template_certificate
                     excelPathHWR.Text = openFileDialog1.SafeFileName;
                     //HWR
                     DisplayExcelHWRContentToGridView();
+
+                    generateHWR.Enabled = true;
                 }
 
                 //display header to combo box for filter
@@ -683,6 +685,15 @@ namespace Template_certificate
         private void previewBtn_Click(object sender, EventArgs e)
         {
             splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
+            if (splitContainer1.Panel2Collapsed)
+            {
+                previewBtn.Text = "\uE015";
+            }
+            else
+            {
+                previewBtn.Text = "\uE014";
+            }
+
         }
 
         private void generateHWR_Click(object sender, EventArgs e)

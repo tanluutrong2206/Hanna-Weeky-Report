@@ -494,6 +494,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Size = new System.Drawing.Size(548, 127);
             this.splitContainer1.SplitterDistance = 38;
@@ -522,6 +523,7 @@
             // 
             // generateHWR
             // 
+            this.generateHWR.Enabled = false;
             this.generateHWR.Location = new System.Drawing.Point(472, 8);
             this.generateHWR.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.generateHWR.Name = "generateHWR";
@@ -539,7 +541,7 @@
             this.previewBtn.Name = "previewBtn";
             this.previewBtn.Size = new System.Drawing.Size(24, 22);
             this.previewBtn.TabIndex = 38;
-            this.previewBtn.Text = " ";
+            this.previewBtn.Text = "";
             this.previewBtn.UseVisualStyleBackColor = true;
             this.previewBtn.Click += new System.EventHandler(this.previewBtn_Click);
             // 
