@@ -1,6 +1,7 @@
 ﻿using SelectPdf;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -76,15 +77,16 @@ namespace Template_certificate
             }
 
             string width = "";
+            var weeks = Convert.ToInt16(ConfigurationManager.AppSettings[$"{certificate}"]);
             if (!string.IsNullOrEmpty(timeRemain))
             {
-                width = Convert.ToDouble(timeRemain) / 26 * 100 + "%";
+                width = Convert.ToDouble(timeRemain) / weeks * 100 + "%";
             }
             else
             {
                 width = "0%";
             }
-            string[] parameters = { folder, reportedDate.ToString("dd/MM/yyyy"), studentName, studentId, timeRemain, studyAvg, studyCompletedLastWeek, htmlTable, width };
+            string[] parameters = { folder, reportedDate.ToString("dd/MM/yyyy"), studentName, studentId, timeRemain, weeks.ToString(), width, studyAvg, studyCompletedLastWeek, htmlTable };
             HtmlToImage htmlToImage = new HtmlToImage();
 
             string html = string.Format(contentHtml, parameters);
