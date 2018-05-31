@@ -64,11 +64,15 @@ namespace Template_certificate
             {
                 string exePath = Application.ExecutablePath;
                 folderStoragePath = Path.Combine(exePath.Remove(exePath.LastIndexOf('\\')), $"HWR\\{reportedDate.ToString("dd-MM-yyyy")}\\{certificate}");
-                DirectoryInfo directory = new DirectoryInfo(folderStoragePath);
-                if (!directory.Exists)
-                {
-                    directory.Create();
-                }
+            }
+            else
+            {
+                folderStoragePath = Path.Combine(folderStoragePath, $"HWR\\{reportedDate.ToString("dd-MM-yyyy")}\\{certificate}");
+            }
+            DirectoryInfo directory = new DirectoryInfo(folderStoragePath);
+            if (!directory.Exists)
+            {
+                directory.Create();
             }
 
             try

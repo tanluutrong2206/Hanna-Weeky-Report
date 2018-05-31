@@ -111,3 +111,7 @@ table {
 .bg-red {
     background-color: red !important;
 }
+
+.border-gray {
+    border: 1px solid gray !important;
+}

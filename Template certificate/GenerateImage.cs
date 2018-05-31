@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Template_certificate
 {
@@ -23,8 +24,8 @@ namespace Template_certificate
         public DateTime reportedDate { get; set; }
         public string folderStoragePath { get; set; }
 
-        private readonly string folder = @"file:///D:\Funix\Hanna Weekly Report\Html source";
-        private readonly string contentHtml = File.ReadAllText(@"D:\Funix\Hanna Weekly Report\Html source\hwr.html");
+        private readonly string folder;
+        private readonly string contentHtml;
 
         public GenerateImage(DataTable dt, string studentId, string studentName, string certificate, DateTime reportedDate, string folderStoragePath)
         {
@@ -34,6 +35,8 @@ namespace Template_certificate
             this.certificate = certificate;
             this.reportedDate = reportedDate;
             this.folderStoragePath = folderStoragePath;
+            folder = Application.ExecutablePath.Remove(Application.ExecutablePath.LastIndexOf("\\")).Replace("\\", "/");
+            contentHtml = File.ReadAllText(Path.Combine(folder, "Html source\\hwr.html"));
         }
 
         internal void GenerateToImage()

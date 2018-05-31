@@ -129,6 +129,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="README - HWR.docx" />
     <None Include="Template certificate_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
