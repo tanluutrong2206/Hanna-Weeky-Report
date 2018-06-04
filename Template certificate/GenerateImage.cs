@@ -81,13 +81,13 @@ namespace Template_certificate
 
             string width = "";
             var weeks = Convert.ToInt16(ConfigurationManager.AppSettings[$"{certificate}"]);
-            if (!string.IsNullOrEmpty(timeRemain))
+            if (string.IsNullOrEmpty(timeRemain) || timeRemain.Equals("N/A"))
             {
-                width = Convert.ToDouble(timeRemain) / weeks * 100 + "%";
+                width = "0%";
             }
             else
             {
-                width = "0%";
+                width = Convert.ToDouble(timeRemain) / weeks * 100 + "%";
             }
             string[] parameters = { folder, reportedDate.ToString("dd/MM/yyyy"), studentName, studentId, timeRemain, weeks.ToString(), width, studyAvg, studyCompletedLastWeek, htmlTable };
             HtmlToImage htmlToImage = new HtmlToImage();

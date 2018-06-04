@@ -726,7 +726,8 @@ namespace Template_certificate
                 headerCheckBox.Checked = true;
                 HeaderCheckBox_Clicked(null, null);
             }
-            pictureBox1.ImageLocation = $@"file:///D:\Funix\Hanna Weekly Report\Template-certificate\Hanna-Weeky-Report\Template certificate\Images/Template cc/{radioButton.Text}.png";
+            string folder = Application.ExecutablePath.Remove(Application.ExecutablePath.LastIndexOf("\\")).Replace("\\", "/");
+            pictureBox1.ImageLocation = Path.Combine(folder, $"Images/Template cc/{radioButton.Text}.png");
         }
     }
 }
