@@ -262,6 +262,7 @@ namespace Template_certificate
             }
             catch (Exception e)
             {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw e;
             }
         }

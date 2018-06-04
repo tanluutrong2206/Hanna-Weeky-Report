@@ -36,7 +36,14 @@ namespace Template_certificate
             this.reportedDate = reportedDate;
             this.folderStoragePath = folderStoragePath;
             folder = Application.ExecutablePath.Remove(Application.ExecutablePath.LastIndexOf("\\")).Replace("\\", "/");
-            contentHtml = File.ReadAllText(Path.Combine(folder, "Html source\\hwr.html"));
+            try
+            {
+                contentHtml = File.ReadAllText(Path.Combine(folder, "Html source\\hwr.html"));
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         internal void GenerateToImage()
@@ -95,12 +102,12 @@ namespace Template_certificate
             string html = string.Format(contentHtml, parameters);
             Image img = htmlToImage.ConvertHtmlString(html);
 
-            //TODO: create new file first
             DirectoryInfo directory = new DirectoryInfo(Path.Combine(folderStoragePath, $"{studentClass}"));
             if (!directory.Exists)
             {
                 directory.Create();
             }
+
             FileStream stream = File.Open(Path.Combine(folderStoragePath, $"{studentClass}/{studentId} - {studentName}.png"), FileMode.Create);
             img.Save(stream, ImageFormat.Png);
             stream.Close();
@@ -123,7 +130,6 @@ namespace Template_certificate
             catch (Exception)
             {
                 return "N/A";
-                throw;
             }
         }
 

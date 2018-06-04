@@ -83,7 +83,7 @@ namespace Template_certificate
                     //check if row has checked in check box
                     if (!backgroundWorker1.CancellationPending && Convert.ToBoolean(row.Cells["checkBoxColumn"].Value))
                     {
-                        //render this row to pdf
+                        //render this row to image
                         string studentName = row.Cells["Danh sách sinh viên"].Value.ToString();
                         string studentID = row.Cells["Mã SV"].Value.ToString();
 
