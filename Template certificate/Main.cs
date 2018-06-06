@@ -717,6 +717,21 @@ namespace Template_certificate
             }
         }
 
+        private void main_Load(object sender, EventArgs e)
+        {
+            string path = Application.ExecutablePath;
+            char[] cPath = path.ToArray();
+            foreach (var c in cPath)
+            {
+                if (c > 128)
+                {
+                    //none ASCII character
+                    MessageBox.Show($"The path contain specific characters or Vietnamese characters. Please change the folder contain applicaion to other valid path.\nFull path: {path}", "The applicaion is terminate", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cancelBtn_Click(null, null);
+                }
+            }
+        }
+
         private void radioButtonCC_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
@@ -727,8 +742,17 @@ namespace Template_certificate
                 headerCheckBox.Checked = true;
                 HeaderCheckBox_Clicked(null, null);
             }
-            string folder = Application.ExecutablePath.Remove(Application.ExecutablePath.LastIndexOf("\\")).Replace("\\", "/");
-            pictureBox1.ImageLocation = Path.Combine(folder, $"Images/Template cc/{radioButton.Text}.png");
+
+            try
+            {
+                string folder = Application.ExecutablePath.Remove(Application.ExecutablePath.LastIndexOf("\\")).Replace("\\", "/");
+                pictureBox1.ImageLocation = Path.Combine(folder, $"Images/Template cc/{radioButton.Text}.png");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
     }
 }
