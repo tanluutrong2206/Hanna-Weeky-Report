@@ -84,7 +84,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog2 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.radioButtonCD4 = new System.Windows.Forms.RadioButton();
             this.tabControl.SuspendLayout();
             this.tabPageCertificate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -542,7 +541,7 @@
             this.previewBtn.Name = "previewBtn";
             this.previewBtn.Size = new System.Drawing.Size(24, 22);
             this.previewBtn.TabIndex = 38;
-            this.previewBtn.Text = "";
+            this.previewBtn.Text = "";
             this.previewBtn.UseVisualStyleBackColor = true;
             this.previewBtn.Click += new System.EventHandler(this.previewBtn_Click);
             // 
@@ -559,7 +558,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButtonCD4);
             this.groupBox2.Controls.Add(this.radioButtonCC8);
             this.groupBox2.Controls.Add(this.radioButtonCC4);
             this.groupBox2.Controls.Add(this.radioButtonCC7);
@@ -759,17 +757,6 @@
             // 
             this.openFileDialog2.FileName = "openFileDialog1";
             // 
-            // radioButtonCD4
-            // 
-            this.radioButtonCD4.AutoSize = true;
-            this.radioButtonCD4.Location = new System.Drawing.Point(482, 50);
-            this.radioButtonCD4.Name = "radioButtonCD4";
-            this.radioButtonCD4.Size = new System.Drawing.Size(46, 17);
-            this.radioButtonCD4.TabIndex = 11;
-            this.radioButtonCD4.Text = "CD4";
-            this.radioButtonCD4.UseVisualStyleBackColor = true;
-            this.radioButtonCD4.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
-            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -864,7 +851,6 @@
         private System.Windows.Forms.RadioButton radioButtonCC3;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.RadioButton radioButtonCD4;
     }
 }
 
