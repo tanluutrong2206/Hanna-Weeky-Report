@@ -727,8 +727,16 @@ namespace Template_certificate
                 headerCheckBox.Checked = true;
                 HeaderCheckBox_Clicked(null, null);
             }
-            string folder = Application.ExecutablePath.Remove(Application.ExecutablePath.LastIndexOf("\\")).Replace("\\", "/");
-            pictureBox1.ImageLocation = Path.Combine(folder, $"Images/Template cc/{radioButton.Text}.png");
+            try
+            {
+                string folder = Application.ExecutablePath.Remove(Application.ExecutablePath.LastIndexOf("\\")).Replace("\\", "/");
+                pictureBox1.ImageLocation = Path.Combine(folder, $"Images/Template cc/{radioButton.Text}.png");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
     }
 }
