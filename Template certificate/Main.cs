@@ -24,7 +24,7 @@ namespace Template_certificate
         private string connectionString = null, fileName;
         private bool selectedFile = false;
 
-        private enum comparison
+        private enum Comparison
         {
             Equal_to,
             Not_equal_to,
@@ -51,7 +51,7 @@ namespace Template_certificate
             groupBox1.Enabled = false;
         }
 
-        private void chooseFileBtn_Click(object sender, EventArgs e)
+        private void ChooseFileBtn_Click(object sender, EventArgs e)
         {
             //init setting for user can only choosing excel file
             openFileDialog1.CheckFileExists = true;
@@ -140,8 +140,10 @@ namespace Template_certificate
 
         private void DisplayHeaderToCbx()
         {
-            List<string> headers = new List<string>();
-            headers.Add("none");
+            List<string> headers = new List<string>
+            {
+                "none"
+            };
             //the first column of data grid view is check box 
             // start collect header from second column
             for (int i = 1; i < dataGridView1.Columns.Count; i++)
@@ -228,11 +230,13 @@ namespace Template_certificate
 
         private DataGridViewCheckBoxColumn CreateCheckBoxColumn()
         {
-            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
-            checkBoxColumn.HeaderText = "";
-            checkBoxColumn.Width = 30;
-            checkBoxColumn.Name = "checkBoxColumn";
-            checkBoxColumn.Resizable = DataGridViewTriState.False;
+            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = "",
+                Width = 30,
+                Name = "checkBoxColumn",
+                Resizable = DataGridViewTriState.False
+            };
 
             return checkBoxColumn;
         }
@@ -313,7 +317,7 @@ namespace Template_certificate
             }
         }
 
-        private void chooseFolder_Click(object sender, EventArgs e)
+        private void ChooseFolder_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -332,39 +336,39 @@ namespace Template_certificate
             }
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void TextBox3_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void resetFilterBtn_Click(object sender, EventArgs e)
+        private void ResetFilterBtn_Click(object sender, EventArgs e)
         {
             field1.SelectedIndex = 0;
 
-            resetCombobox(and_orCbx1);
-            resetCombobox(and_orCbx2);
+            ResetCombobox(and_orCbx1);
+            ResetCombobox(and_orCbx2);
 
-            resetCombobox(comparison1);
-            resetCombobox(comparison2);
-            resetCombobox(comparison3);
+            ResetCombobox(comparison1);
+            ResetCombobox(comparison2);
+            ResetCombobox(comparison3);
 
-            resetTextField(compare1);
-            resetTextField(compare2);
-            resetTextField(compare3);
+            ResetTextField(compare1);
+            ResetTextField(compare2);
+            ResetTextField(compare3);
         }
 
-        private void resetTextField(TextBox txt)
+        private void ResetTextField(TextBox txt)
         {
             txt.Text = "";
         }
 
-        private void resetCombobox(ComboBox cbx)
+        private void ResetCombobox(ComboBox cbx)
         {
             cbx.SelectedIndex = -1;
 
         }
 
-        private void filterBtn_Click(object sender, EventArgs e)
+        private void FilterBtn_Click(object sender, EventArgs e)
         {
             string query = "";
             //get the data to sort
@@ -402,22 +406,22 @@ namespace Template_certificate
                 query += $"[{field.SelectedItem}] ";
                 switch (comparisonCbx.SelectedIndex)
                 {
-                    case (int)comparison.Contains:
+                    case (int)Comparison.Contains:
                         {
                             query += $"like '%{compareTxt}%' ";
                             break;
                         }
-                    case (int)comparison.Does_not_contain:
+                    case (int)Comparison.Does_not_contain:
                         {
                             query += $"not like '%{compareTxt}%' ";
                             break;
                         }
-                    case (int)comparison.Equal_to:
+                    case (int)Comparison.Equal_to:
                         {
                             query += $" = {compareTxt}";
                             break;
                         }
-                    case (int)comparison.Greater_than:
+                    case (int)Comparison.Greater_than:
                         {
                             double number;
                             try
@@ -432,7 +436,7 @@ namespace Template_certificate
 
                             break;
                         }
-                    case (int)comparison.Greater_than_or_equal:
+                    case (int)Comparison.Greater_than_or_equal:
                         {
                             double number;
                             try
@@ -446,17 +450,17 @@ namespace Template_certificate
                             query += $">= {number} ";
                             break;
                         }
-                    case (int)comparison.Is_blank:
+                    case (int)Comparison.Is_blank:
                         {
                             query += "is null ";
                             break;
                         }
-                    case (int)comparison.Is_not_blank:
+                    case (int)Comparison.Is_not_blank:
                         {
                             query += "is not null ";
                             break;
                         }
-                    case (int)comparison.Less_than:
+                    case (int)Comparison.Less_than:
                         {
                             double number;
                             try
@@ -470,7 +474,7 @@ namespace Template_certificate
                             query += $"< {number} ";
                             break;
                         }
-                    case (int)comparison.Less_than_or_equal:
+                    case (int)Comparison.Less_than_or_equal:
                         {
                             double number;
                             try
@@ -484,7 +488,7 @@ namespace Template_certificate
                             query += $"<= {number} ";
                             break;
                         }
-                    case (int)comparison.Not_equal_to:
+                    case (int)Comparison.Not_equal_to:
                         {
                             double number;
                             try
@@ -503,7 +507,7 @@ namespace Template_certificate
             return query;
         }
 
-        private void field1_SelectedIndexChanged(object sender, EventArgs e)
+        private void Field1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (field1.SelectedIndex > 0)
             {
@@ -522,7 +526,7 @@ namespace Template_certificate
             }
         }
 
-        private void field2_SelectedIndexChanged(object sender, EventArgs e)
+        private void Field2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (field2.SelectedIndex > 0)
             {
@@ -542,7 +546,7 @@ namespace Template_certificate
             }
         }
 
-        private void field3_SelectedIndexChanged(object sender, EventArgs e)
+        private void Field3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (field3.SelectedIndex > 0)
             {
@@ -558,7 +562,7 @@ namespace Template_certificate
             }
         }
 
-        private void comparison1_SelectedIndexChanged(object sender, EventArgs e)
+        private void Comparison1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             if (comboBox.SelectedItem == null)
@@ -609,7 +613,7 @@ namespace Template_certificate
             }
         }
 
-        private void and_orCbx1_SelectedIndexChanged(object sender, EventArgs e)
+        private void And_orCbx1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (and_orCbx1.SelectedIndex >= 0)
             {
@@ -623,7 +627,7 @@ namespace Template_certificate
             }
         }
 
-        private void and_orCbx2_SelectedIndexChanged(object sender, EventArgs e)
+        private void And_orCbx2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (and_orCbx2.SelectedIndex >= 0)
             {
@@ -637,7 +641,7 @@ namespace Template_certificate
             }
         }
 
-        private void cancelBtn_Click(object sender, EventArgs e)
+        private void CancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -671,19 +675,19 @@ namespace Template_certificate
             return reportedDate.Value;
         }
 
-        private void renderPdfBtn_Click(object sender, EventArgs e)
+        private void RenderPdfBtn_Click(object sender, EventArgs e)
         {
             ProcessDialogGenerateCertificate dialog = new ProcessDialogGenerateCertificate(this, false);
             dialog.ShowDialog();
         }
 
-        private void renderAndUploadBtn_Click(object sender, EventArgs e)
+        private void RenderAndUploadBtn_Click(object sender, EventArgs e)
         {
             ProcessDialogGenerateCertificate dialog = new ProcessDialogGenerateCertificate(this, true);
             dialog.ShowDialog();
         }
 
-        private void previewBtn_Click(object sender, EventArgs e)
+        private void PreviewBtn_Click(object sender, EventArgs e)
         {
             splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
             if (splitContainer1.Panel2Collapsed)
@@ -697,13 +701,13 @@ namespace Template_certificate
 
         }
 
-        private void generateHWR_Click(object sender, EventArgs e)
+        private void GenerateHWR_Click(object sender, EventArgs e)
         {
             ProcessDialogHWR processDialogHWR = new ProcessDialogHWR(this);
             processDialogHWR.ShowDialog();
         }
 
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl.SelectedIndex == 0)
             {
@@ -717,7 +721,7 @@ namespace Template_certificate
             }
         }
 
-        private void main_Load(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
             string path = Application.ExecutablePath;
             char[] cPath = path.ToArray();
@@ -727,12 +731,13 @@ namespace Template_certificate
                 {
                     //none ASCII character
                     MessageBox.Show($"The path contain specific characters or Vietnamese characters. Please change the folder contain applicaion to other valid path.\nFull path: {path}", "The applicaion is terminate", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    cancelBtn_Click(null, null);
+                    CancelBtn_Click(null, null);
                 }
             }
+            previewBtn.Text = "\uE014";
         }
 
-        private void radioButtonCC_CheckedChanged(object sender, EventArgs e)
+        private void RadioButtonCC_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
             if (radioButton.Checked && !string.IsNullOrEmpty(fileName))

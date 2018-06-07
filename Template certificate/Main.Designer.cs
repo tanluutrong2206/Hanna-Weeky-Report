@@ -109,7 +109,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(569, 535);
             this.tabControl.TabIndex = 1;
-            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
             // 
             // tabPageCertificate
             // 
@@ -141,7 +141,7 @@
             this.renderAndUploadBtn.TabIndex = 38;
             this.renderAndUploadBtn.Text = "Generate and upload";
             this.renderAndUploadBtn.UseVisualStyleBackColor = true;
-            this.renderAndUploadBtn.Click += new System.EventHandler(this.renderAndUploadBtn_Click);
+            this.renderAndUploadBtn.Click += new System.EventHandler(this.RenderAndUploadBtn_Click);
             // 
             // renderPdfBtn
             // 
@@ -153,7 +153,7 @@
             this.renderPdfBtn.TabIndex = 37;
             this.renderPdfBtn.Text = "Generate";
             this.renderPdfBtn.UseVisualStyleBackColor = true;
-            this.renderPdfBtn.Click += new System.EventHandler(this.renderPdfBtn_Click);
+            this.renderPdfBtn.Click += new System.EventHandler(this.RenderPdfBtn_Click);
             // 
             // cancelBtn
             // 
@@ -164,7 +164,7 @@
             this.cancelBtn.TabIndex = 36;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // excelPathCertificate
             // 
@@ -174,7 +174,7 @@
             this.excelPathCertificate.ReadOnly = true;
             this.excelPathCertificate.Size = new System.Drawing.Size(407, 20);
             this.excelPathCertificate.TabIndex = 32;
-            this.excelPathCertificate.Click += new System.EventHandler(this.chooseFileBtn_Click);
+            this.excelPathCertificate.Click += new System.EventHandler(this.ChooseFileBtn_Click);
             // 
             // dataGridView1
             // 
@@ -228,7 +228,7 @@
             this.filterBtn.TabIndex = 26;
             this.filterBtn.Text = "Ok";
             this.filterBtn.UseVisualStyleBackColor = true;
-            this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
+            this.filterBtn.Click += new System.EventHandler(this.FilterBtn_Click);
             // 
             // resetFilterBtn
             // 
@@ -239,7 +239,7 @@
             this.resetFilterBtn.TabIndex = 25;
             this.resetFilterBtn.Text = "Clear All";
             this.resetFilterBtn.UseVisualStyleBackColor = true;
-            this.resetFilterBtn.Click += new System.EventHandler(this.resetFilterBtn_Click);
+            this.resetFilterBtn.Click += new System.EventHandler(this.ResetFilterBtn_Click);
             // 
             // label3
             // 
@@ -278,7 +278,7 @@
             this.compare3.Name = "compare3";
             this.compare3.Size = new System.Drawing.Size(156, 20);
             this.compare3.TabIndex = 20;
-            this.compare3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.compare3.TextChanged += new System.EventHandler(this.TextBox3_TextChanged);
             // 
             // compare2
             // 
@@ -287,7 +287,7 @@
             this.compare2.Name = "compare2";
             this.compare2.Size = new System.Drawing.Size(156, 20);
             this.compare2.TabIndex = 19;
-            this.compare2.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.compare2.TextChanged += new System.EventHandler(this.TextBox3_TextChanged);
             // 
             // compare1
             // 
@@ -296,7 +296,7 @@
             this.compare1.Name = "compare1";
             this.compare1.Size = new System.Drawing.Size(156, 20);
             this.compare1.TabIndex = 18;
-            this.compare1.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.compare1.TextChanged += new System.EventHandler(this.TextBox3_TextChanged);
             // 
             // comparison3
             // 
@@ -317,7 +317,7 @@
             this.comparison3.Name = "comparison3";
             this.comparison3.Size = new System.Drawing.Size(124, 21);
             this.comparison3.TabIndex = 16;
-            this.comparison3.SelectedIndexChanged += new System.EventHandler(this.comparison1_SelectedIndexChanged);
+            this.comparison3.SelectedIndexChanged += new System.EventHandler(this.Comparison1_SelectedIndexChanged);
             // 
             // comparison2
             // 
@@ -338,7 +338,7 @@
             this.comparison2.Name = "comparison2";
             this.comparison2.Size = new System.Drawing.Size(124, 21);
             this.comparison2.TabIndex = 15;
-            this.comparison2.SelectedIndexChanged += new System.EventHandler(this.comparison1_SelectedIndexChanged);
+            this.comparison2.SelectedIndexChanged += new System.EventHandler(this.Comparison1_SelectedIndexChanged);
             // 
             // comparison1
             // 
@@ -359,7 +359,7 @@
             this.comparison1.Name = "comparison1";
             this.comparison1.Size = new System.Drawing.Size(124, 21);
             this.comparison1.TabIndex = 14;
-            this.comparison1.SelectedIndexChanged += new System.EventHandler(this.comparison1_SelectedIndexChanged);
+            this.comparison1.SelectedIndexChanged += new System.EventHandler(this.Comparison1_SelectedIndexChanged);
             // 
             // field3
             // 
@@ -369,7 +369,7 @@
             this.field3.Name = "field3";
             this.field3.Size = new System.Drawing.Size(132, 21);
             this.field3.TabIndex = 12;
-            this.field3.SelectedIndexChanged += new System.EventHandler(this.field3_SelectedIndexChanged);
+            this.field3.SelectedIndexChanged += new System.EventHandler(this.Field3_SelectedIndexChanged);
             // 
             // field2
             // 
@@ -379,7 +379,7 @@
             this.field2.Name = "field2";
             this.field2.Size = new System.Drawing.Size(132, 21);
             this.field2.TabIndex = 11;
-            this.field2.SelectedIndexChanged += new System.EventHandler(this.field2_SelectedIndexChanged);
+            this.field2.SelectedIndexChanged += new System.EventHandler(this.Field2_SelectedIndexChanged);
             // 
             // field1
             // 
@@ -389,7 +389,7 @@
             this.field1.Name = "field1";
             this.field1.Size = new System.Drawing.Size(132, 21);
             this.field1.TabIndex = 10;
-            this.field1.SelectedIndexChanged += new System.EventHandler(this.field1_SelectedIndexChanged);
+            this.field1.SelectedIndexChanged += new System.EventHandler(this.Field1_SelectedIndexChanged);
             // 
             // and_orCbx2
             // 
@@ -402,7 +402,7 @@
             this.and_orCbx2.Name = "and_orCbx2";
             this.and_orCbx2.Size = new System.Drawing.Size(50, 21);
             this.and_orCbx2.TabIndex = 8;
-            this.and_orCbx2.SelectedIndexChanged += new System.EventHandler(this.and_orCbx1_SelectedIndexChanged);
+            this.and_orCbx2.SelectedIndexChanged += new System.EventHandler(this.And_orCbx1_SelectedIndexChanged);
             // 
             // and_orCbx1
             // 
@@ -415,7 +415,7 @@
             this.and_orCbx1.Name = "and_orCbx1";
             this.and_orCbx1.Size = new System.Drawing.Size(50, 21);
             this.and_orCbx1.TabIndex = 7;
-            this.and_orCbx1.SelectedIndexChanged += new System.EventHandler(this.and_orCbx1_SelectedIndexChanged);
+            this.and_orCbx1.SelectedIndexChanged += new System.EventHandler(this.And_orCbx1_SelectedIndexChanged);
             // 
             // button2
             // 
@@ -435,7 +435,7 @@
             this.folderPathCertificate.ReadOnly = true;
             this.folderPathCertificate.Size = new System.Drawing.Size(407, 20);
             this.folderPathCertificate.TabIndex = 34;
-            this.folderPathCertificate.Click += new System.EventHandler(this.chooseFolder_Click);
+            this.folderPathCertificate.Click += new System.EventHandler(this.ChooseFolder_Click);
             // 
             // chooseFolder
             // 
@@ -446,7 +446,7 @@
             this.chooseFolder.TabIndex = 33;
             this.chooseFolder.Text = "Choose folder storage";
             this.chooseFolder.UseVisualStyleBackColor = true;
-            this.chooseFolder.Click += new System.EventHandler(this.chooseFolder_Click);
+            this.chooseFolder.Click += new System.EventHandler(this.ChooseFolder_Click);
             // 
             // chooseFileBtn
             // 
@@ -457,7 +457,7 @@
             this.chooseFileBtn.TabIndex = 31;
             this.chooseFileBtn.Text = "Choose excel file";
             this.chooseFileBtn.UseVisualStyleBackColor = true;
-            this.chooseFileBtn.Click += new System.EventHandler(this.chooseFileBtn_Click);
+            this.chooseFileBtn.Click += new System.EventHandler(this.ChooseFileBtn_Click);
             // 
             // tabPageHWR
             // 
@@ -520,7 +520,7 @@
             this.button4.TabIndex = 36;
             this.button4.Text = "Cancel";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.button4.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // generateHWR
             // 
@@ -532,7 +532,7 @@
             this.generateHWR.TabIndex = 37;
             this.generateHWR.Text = "Generate";
             this.generateHWR.UseVisualStyleBackColor = true;
-            this.generateHWR.Click += new System.EventHandler(this.generateHWR_Click);
+            this.generateHWR.Click += new System.EventHandler(this.GenerateHWR_Click);
             // 
             // previewBtn
             // 
@@ -544,7 +544,7 @@
             this.previewBtn.TabIndex = 38;
             this.previewBtn.Text = "\\uE014";
             this.previewBtn.UseVisualStyleBackColor = true;
-            this.previewBtn.Click += new System.EventHandler(this.previewBtn_Click);
+            this.previewBtn.Click += new System.EventHandler(this.PreviewBtn_Click);
             // 
             // pictureBox1
             // 
@@ -587,7 +587,7 @@
             this.radioButtonCC8.TabIndex = 10;
             this.radioButtonCC8.Text = "CC8";
             this.radioButtonCC8.UseVisualStyleBackColor = true;
-            this.radioButtonCC8.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
+            this.radioButtonCC8.CheckedChanged += new System.EventHandler(this.RadioButtonCC_CheckedChanged);
             // 
             // radioButtonCC4
             // 
@@ -598,7 +598,7 @@
             this.radioButtonCC4.TabIndex = 9;
             this.radioButtonCC4.Text = "CC4";
             this.radioButtonCC4.UseVisualStyleBackColor = true;
-            this.radioButtonCC4.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
+            this.radioButtonCC4.CheckedChanged += new System.EventHandler(this.RadioButtonCC_CheckedChanged);
             // 
             // radioButtonCC7
             // 
@@ -609,7 +609,7 @@
             this.radioButtonCC7.TabIndex = 8;
             this.radioButtonCC7.Text = "CC7";
             this.radioButtonCC7.UseVisualStyleBackColor = true;
-            this.radioButtonCC7.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
+            this.radioButtonCC7.CheckedChanged += new System.EventHandler(this.RadioButtonCC_CheckedChanged);
             // 
             // radioButtonCC3
             // 
@@ -620,7 +620,7 @@
             this.radioButtonCC3.TabIndex = 7;
             this.radioButtonCC3.Text = "CC3";
             this.radioButtonCC3.UseVisualStyleBackColor = true;
-            this.radioButtonCC3.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
+            this.radioButtonCC3.CheckedChanged += new System.EventHandler(this.RadioButtonCC_CheckedChanged);
             // 
             // radioButtonCC6
             // 
@@ -631,7 +631,7 @@
             this.radioButtonCC6.TabIndex = 6;
             this.radioButtonCC6.Text = "CC6";
             this.radioButtonCC6.UseVisualStyleBackColor = true;
-            this.radioButtonCC6.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
+            this.radioButtonCC6.CheckedChanged += new System.EventHandler(this.RadioButtonCC_CheckedChanged);
             // 
             // radioButtonCC2
             // 
@@ -642,7 +642,7 @@
             this.radioButtonCC2.TabIndex = 5;
             this.radioButtonCC2.Text = "CC2";
             this.radioButtonCC2.UseVisualStyleBackColor = true;
-            this.radioButtonCC2.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
+            this.radioButtonCC2.CheckedChanged += new System.EventHandler(this.RadioButtonCC_CheckedChanged);
             // 
             // radioButtonCC5
             // 
@@ -653,7 +653,7 @@
             this.radioButtonCC5.TabIndex = 4;
             this.radioButtonCC5.Text = "CC5";
             this.radioButtonCC5.UseVisualStyleBackColor = true;
-            this.radioButtonCC5.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
+            this.radioButtonCC5.CheckedChanged += new System.EventHandler(this.RadioButtonCC_CheckedChanged);
             // 
             // radioButtonCC1
             // 
@@ -666,7 +666,7 @@
             this.radioButtonCC1.TabStop = true;
             this.radioButtonCC1.Text = "CC1";
             this.radioButtonCC1.UseVisualStyleBackColor = true;
-            this.radioButtonCC1.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
+            this.radioButtonCC1.CheckedChanged += new System.EventHandler(this.RadioButtonCC_CheckedChanged);
             // 
             // label5
             // 
@@ -702,7 +702,7 @@
             this.excelPathHWR.ReadOnly = true;
             this.excelPathHWR.Size = new System.Drawing.Size(407, 20);
             this.excelPathHWR.TabIndex = 32;
-            this.excelPathHWR.Click += new System.EventHandler(this.chooseFileBtn_Click);
+            this.excelPathHWR.Click += new System.EventHandler(this.ChooseFileBtn_Click);
             // 
             // dataGridView2
             // 
@@ -727,7 +727,7 @@
             this.folderPathHWR.ReadOnly = true;
             this.folderPathHWR.Size = new System.Drawing.Size(407, 20);
             this.folderPathHWR.TabIndex = 34;
-            this.folderPathHWR.Click += new System.EventHandler(this.chooseFolder_Click);
+            this.folderPathHWR.Click += new System.EventHandler(this.ChooseFolder_Click);
             // 
             // button8
             // 
@@ -738,7 +738,7 @@
             this.button8.TabIndex = 33;
             this.button8.Text = "Choose folder storage";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.chooseFolder_Click);
+            this.button8.Click += new System.EventHandler(this.ChooseFolder_Click);
             // 
             // button9
             // 
@@ -749,7 +749,7 @@
             this.button9.TabIndex = 31;
             this.button9.Text = "Choose excel file";
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.chooseFileBtn_Click);
+            this.button9.Click += new System.EventHandler(this.ChooseFileBtn_Click);
             // 
             // openFileDialog1
             // 
@@ -768,7 +768,7 @@
             this.radioButtonCD4.TabIndex = 11;
             this.radioButtonCD4.Text = "CD4";
             this.radioButtonCD4.UseVisualStyleBackColor = true;
-            this.radioButtonCD4.CheckedChanged += new System.EventHandler(this.radioButtonCC_CheckedChanged);
+            this.radioButtonCD4.CheckedChanged += new System.EventHandler(this.RadioButtonCC_CheckedChanged);
             // 
             // main
             // 
@@ -784,7 +784,7 @@
             this.Name = "main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home - Generate Certificate";
-            this.Load += new System.EventHandler(this.main_Load);
+            this.Load += new System.EventHandler(this.Main_Load);
             this.tabControl.ResumeLayout(false);
             this.tabPageCertificate.ResumeLayout(false);
             this.tabPageCertificate.PerformLayout();
