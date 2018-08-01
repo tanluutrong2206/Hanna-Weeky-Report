@@ -44,7 +44,6 @@ body {
 
 .title {
     text-align: center;
-    font-style: bold;
 }
 
 [class*="col-"] {
@@ -128,9 +127,9 @@ table td:nth-child(2) {
 }
 
 ul {
-    columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
+    columns: 2;
 }
 
 .inforStudent {

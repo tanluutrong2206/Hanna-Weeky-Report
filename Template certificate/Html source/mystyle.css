@@ -84,7 +84,7 @@
 h4 {
     font-family: 'Roboto Bold';
     /* font-weight: bolder; */
-    line-height: 0px;
+    line-height: 0;
     font-size: 10px;
 }
 
