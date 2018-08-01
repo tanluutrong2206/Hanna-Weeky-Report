@@ -97,7 +97,7 @@ namespace Template_certificate
                 width = Convert.ToDouble(timeRemain) / weeks * 100 + "%";
             }
             string[] parameters = { folder, reportedDate.ToString("dd/MM/yyyy"), studentName, studentId, timeRemain, weeks.ToString(), width, studyAvg, studyCompletedLastWeek, htmlTable };
-            HtmlToImage htmlToImage = new HtmlToImage(786);
+            HtmlToImage htmlToImage = new HtmlToImage(850);
 
             string html = string.Format(contentHtml, parameters);
             Image img = htmlToImage.ConvertHtmlString(html);
