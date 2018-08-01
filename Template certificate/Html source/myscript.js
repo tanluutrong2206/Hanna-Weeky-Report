@@ -14,12 +14,16 @@ function textAlert() {
 
     if (number_to_do <= 16) {
         green.textContent = "YOU ARE HERE";
+        green.style.color = "white";
     } else if (number_to_do <= 30) {
         yellow.textContent = "YOU ARE HERE";
+        yellow.style.color = "black";
     } else if (number_to_do <= 60) {
         orange.textContent = "YOU ARE HERE";
+        orange.style.color = "black";
     } else {
         red.textContent = "YOU ARE HERE";
+        red.style.color = "black";
     }
 }
 

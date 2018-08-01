@@ -20,6 +20,10 @@
     word-wrap: break-word;
 }
 
+.text-italic {
+    font-style: italic;
+}
+
 .warning .row {
     width: 50%;
 }
@@ -34,7 +38,8 @@
 }
 
 body {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Georgia, Serif;
+    font-size: 110%;
 }
 
 .title {
@@ -114,4 +119,10 @@ table {
 
 .border-gray {
     border: 1px solid gray !important;
+}
+
+ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
 }
