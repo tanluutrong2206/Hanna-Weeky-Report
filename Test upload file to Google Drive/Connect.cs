@@ -16,7 +16,7 @@ namespace Template_certificate
 {
     public class Connect
     {
-        private string[] Scopes = { DriveService.Scope.Drive };
+        private readonly string[] Scopes = { DriveService.Scope.Drive };
         public string WebViewLink{ get; set; }
 
         public UserCredential GetAuthenication()

@@ -80,29 +80,51 @@ namespace Template_certificate
                 List<Task> tasks = new List<Task>();
                 Parallel.ForEach(dataGridView.Rows.Cast<DataGridViewRow>(), row =>
                 {
-                    //check if row has checked in check box
-                    if (!backgroundWorker1.CancellationPending && Convert.ToBoolean(row.Cells["checkBoxColumn"].Value))
+                    try
                     {
-                        //render this row to image
-                        string studentName = row.Cells["Danh sách sinh viên"].Value.ToString();
-                        string studentID = row.Cells["Mã SV"].Value.ToString();
-
-                        string query = $"Select * from [{certificate}$] where [Mã SV] = '{studentID}' and [Chứng chỉ] = '{certificate}'";
-
-                        DataTable dt = _owner.GetDataSourceForGridView(query);
-
-                        tasks.Add(Task.Run(() =>
+                        //check if row has checked in check box
+                        if (!backgroundWorker1.CancellationPending && Convert.ToBoolean(row.Cells["checkBoxColumn"].Value))
                         {
+                            //render this row to image
+                            string studentName = row.Cells["Danh sách sinh viên"].Value.ToString();
+                            string studentID = row.Cells["Mã SV"].Value.ToString();
+
+                            string query = $"Select * from [{certificate}$] where [Mã SV] = '{studentID}' and [Chứng chỉ] = '{certificate}'";
+
+                            DataTable dt = _owner.GetDataSourceForGridView(query);
+
                             GenerateImage generateImage = new GenerateImage(dt, studentID, studentName, certificate, reportedDate, folderStoragePath);
-                            generateImage.GenerateToImage();
-                        })
-                        .ContinueWith(t => {
-                            count++;
-                            worker.ReportProgress(count);
-                        }));
+                            tasks.Add(Task.Run(() =>
+                            {
+                                //TODO: check if header is not correct, show error and stop
+                                try
+                                {
+                                    if (!backgroundWorker1.CancellationPending)
+                                    {
+                                        generateImage.GenerateToImage();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    tasks.Clear();
+                                    backgroundWorker1.CancelAsync();
+                                    throw ex;
+                                }
+                            })
+                            .ContinueWith(t =>
+                            {
+                                count++;
+                                worker.ReportProgress(count);
+                            }));
+                        }
+                    }
+                    catch
+                    {
+                        throw;
                     }
                 });
 
+            
                 // Wait on all the tasks.
                 Task.WaitAll(tasks.ToArray());
 

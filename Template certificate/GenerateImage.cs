@@ -61,21 +61,24 @@ namespace Template_certificate
 
             foreach (DataRow row in dt.Rows)
             {
-                string course = row["Môn"].ToString();
-                string exam = row["Exam"].ToString();
-                string quest = row["% ques"].ToString();
-                string quiz = row["% quiz"].ToString();
-                string asm = row["% asm"].ToString();
-                string lab = row["%Lab"].ToString();
-                string courseStatus = row["Trạng thái môn"].ToString();
+                try
+                {
+                    string course = row["Môn"].ToString();
+                    string exam = row["Exam"].ToString();
+                    string quest = row["% ques"].ToString();
+                    string quiz = row["% quiz"].ToString();
+                    string asm = row["% asm"].ToString();
+                    string lab = row["%Lab"].ToString();
+                    string courseStatus = row["Trạng thái môn"].ToString();
 
-                courseStatus = BeautiNumber(courseStatus, "{0:0.0}");
-                lab = BeautiNumber(lab, "{0:0.0%}");
-                quest = BeautiNumber(quest, "{0:0.0%}");
-                quiz = BeautiNumber(quiz, "{0:0.0%}");
-                asm = BeautiNumber(asm, "{0:0.0%}");
 
-                htmlTable += $@"<tr>
+                    courseStatus = BeautiNumber(courseStatus, "{0:0.0}");
+                    lab = BeautiNumber(lab, "{0:0.0%}");
+                    quest = BeautiNumber(quest, "{0:0.0%}");
+                    quiz = BeautiNumber(quiz, "{0:0.0%}");
+                    asm = BeautiNumber(asm, "{0:0.0%}");
+
+                    htmlTable += $@"<tr>
                         <td>{course}</td>
                         <td>{courseStatus}</td>
                         <td>{quest}</td>
@@ -84,6 +87,12 @@ namespace Template_certificate
                         <td>{asm}</td>
                         <td>{exam}</td>
                     </tr>";
+                }
+                catch(Exception e)
+                {
+                    //MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw e;
+                }
             }
 
             string width = "";
