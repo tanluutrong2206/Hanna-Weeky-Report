@@ -124,6 +124,13 @@ namespace Template_certificate
 
         private string BeautiNumber(string number, string format)
         {
+            // user set number in column in text like 100%
+            bool checkContainPercentCharacter = false;
+            if (number.Contains("%"))
+            {
+                number = number.Substring(0, number.Length - 1);
+                checkContainPercentCharacter = true;
+            }
             try
             {
                 if (string.IsNullOrEmpty(number))
@@ -133,6 +140,10 @@ namespace Template_certificate
                 else
                 {
                     double dNumber = Convert.ToDouble(number);
+                    if (checkContainPercentCharacter)
+                    {
+                        dNumber /= 100;
+                    }
                     return string.Format(format, dNumber);
                 }
             }
